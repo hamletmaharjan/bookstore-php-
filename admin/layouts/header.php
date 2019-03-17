@@ -17,7 +17,7 @@ if(!CheckAdminLogin()){
     <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>Creative - Bootstrap Admin Template</title>
+    <title>Hams Project</title>
 
     <!-- Bootstrap CSS -->    
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -282,7 +282,7 @@ if(!CheckAdminLogin()){
                             <span class="profile-ava">
                                 <img alt="" src="img/avatar1_small.jpg">
                             </span>
-                            <span class="username">Jenifer Smith</span>
+                            <span class="username">Hamlet Maharjan</span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">

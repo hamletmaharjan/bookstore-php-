@@ -1,6 +1,16 @@
 <?php
+
 include 'layouts/header.php';
 include 'layouts/sidebar.php';
+$msg='';
+if(isset($_POST['submitbtn'])){
+  if(InsertData($conn,$_POST,"table_admin")){
+    $msg = "data inserted i guess";
+  }
+  else{
+    $msg = "you fucked up";
+  }
+}
 
 ?>
 
@@ -19,11 +29,13 @@ include 'layouts/sidebar.php';
     					</ol>
     				</div>
     			</div>
+
+
                   <div class="row">
                       <div class="col-lg-12">
                           <section class="panel">
                               <header class="panel-heading">
-                                User Form
+                                User Form <?php echo $msg; ?>
                               </header>
                               <div class="panel-body">
                                   <form class="form-horizontal " method="POST">
@@ -60,10 +72,10 @@ include 'layouts/sidebar.php';
                                       <div class="form-group">
                                           <label class="col-sm-2 control-label">Role</label>
                                           <div class="col-sm-10">
-                                            <select class="form-control m-bot15">
+                                            <select class="form-control m-bot15" name="role">
                                               <option value="superadmin">Super Admin</option>
                                               <option value="admin">Admin</option>
-                                            </select>
+                                          </select>
                                           </div>
                                       </div>
                                       <div class="form-group">
@@ -76,7 +88,7 @@ include 'layouts/sidebar.php';
                                           </div>
                                       </div>
                                       <div class="form-group">
-                                          <button type="submit" class="btn btn-primary">Submit</button>
+                                          <button type="submit" name="submitbtn">Submit</button>
                                       </div>
                                   </form>
                               </div>
