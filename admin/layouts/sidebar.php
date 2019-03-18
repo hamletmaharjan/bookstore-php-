@@ -17,7 +17,7 @@
                         </a>
                         <ul class="sub">
                             <li><a class="" href="adduser.php">Add Users</a></li>                          
-                            <li><a class="" href="form_validation.html">Manage Users</a></li>
+                            <li><a class="" href="manageusers.php">Manage Users</a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">

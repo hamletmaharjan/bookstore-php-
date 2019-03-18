@@ -5,10 +5,11 @@ include 'layouts/sidebar.php';
 $msg='';
 if(isset($_POST['submitbtn'])){
   if(InsertData($conn,$_POST,"table_admin")){
-    $msg = "data inserted i guess";
+    ShowMessage('Successfully Inserted Data','success');
+    redirection('manageusers.php');
   }
   else{
-    $msg = "you fucked up";
+   
   }
 }
 
@@ -35,8 +36,13 @@ if(isset($_POST['submitbtn'])){
                       <div class="col-lg-12">
                           <section class="panel">
                               <header class="panel-heading">
-                                User Form <?php echo $msg; ?>
+                                User Form 
                               </header>
+                              <?php
+                              if(isset($_SESSION['msg'])){
+                                echo $_SESSION['msg'];
+                                unset($_SESSION['msg']);
+                              } ?>
                               <div class="panel-body">
                                   <form class="form-horizontal " method="POST">
                                       <div class="form-group">

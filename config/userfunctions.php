@@ -18,7 +18,7 @@ function InsertData($conn,$data,$tablename){
 	
 	$stmt = $conn->prepare($insertQuery);
 
-	dd($data);
+	
 
 	/*
 	foreach ($data as $key => $value) {
@@ -48,5 +48,18 @@ function InsertData($conn,$data,$tablename){
 		echo $e->getMessage();
 	}
 	
+}
+
+
+
+function GetUsers($conn){
+	$stmt = $conn->prepare("SELECT * FROM table_admin");
+	$stmt->execute();
+	if($stmt->rowCount()>0){
+		return $stmt->fetchAll();
+	}
+	else{
+		return false;
+	}
 }
 ?>
