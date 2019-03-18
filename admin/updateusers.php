@@ -2,14 +2,17 @@
 
 include 'layouts/header.php';
 include 'layouts/sidebar.php';
-$msg='';
-if(isset($_POST['submitbtn'])){
-  if(InsertData($conn,$_POST,"table_admin")){
-    ShowMessage('Successfully Inserted Data','success');
+
+$userId=$_GET['ref'];
+$user = GetUserById($conn,$userId);
+if($user){
+  
+}
+
+if(isset($_POST['savebtn'])){
+  if(UpdateData($conn,$_POST,'table_admin',$userId)){
+    ShowMessage("Data Updated Successfully","success");
     redirection('manageusers.php');
-  }
-  else{
-   
   }
 }
 
@@ -43,39 +46,33 @@ if(isset($_POST['submitbtn'])){
                                       <div class="form-group">
                                           <label class="col-sm-2 control-label">First Name</label>
                                           <div class="col-sm-10">
-                                              <input type="text" name="first_name" class="form-control">
+                                              <input type="text" name="first_name" value="<?php echo $user['first_name'];?>"class="form-control">
                                           </div>
                                       </div>
                                       <div class="form-group">
                                           <label class="col-sm-2 control-label">Last Name</label>
                                           <div class="col-sm-10">
-                                              <input type="text" name="last_name" class="form-control">
+                                              <input type="text" name="last_name" value="<?php echo $user['last_name'];?>" class="form-control">
                                           </div>
                                       </div>
                                       <div class="form-group">
                                           <label class="col-sm-2 control-label">Email</label>
                                           <div class="col-sm-10">
-                                              <input type="email" name="email" class="form-control">
-                                          </div>
-                                      </div>
-                                      <div class="form-group">
-                                          <label class="col-sm-2 control-label">Passowrd</label>
-                                          <div class="col-sm-10">
-                                              <input type="password" name="password" class="form-control">
+                                              <input type="email" name="email" value="<?php echo $user['email'];?>" class="form-control">
                                           </div>
                                       </div>
                                       <div class="form-group">
                                           <label class="col-sm-2 control-label">Contact</label>
                                           <div class="col-sm-10">
-                                              <input type="text" name="contact" class="form-control">
+                                              <input type="text" name="contact" value="<?php echo $user['contact'];?>" class="form-control">
                                           </div>
                                       </div>
                                       <div class="form-group">
                                           <label class="col-sm-2 control-label">Role</label>
                                           <div class="col-sm-10">
                                             <select class="form-control m-bot15" name="role">
-                                              <option value="superadmin">Super Admin</option>
-                                              <option value="admin">Admin</option>
+                                              <option value="superadmin"<?php if($user['role']=='superadmin') echo 'selected="selected"'; ?>>Super Admin</option>
+                                              <option value="admin"<?php if($user['role']=='admin') echo 'selected="selected"';?>>Admin</option>
                                           </select>
                                           </div>
                                       </div>
@@ -83,13 +80,16 @@ if(isset($_POST['submitbtn'])){
                                           <label class="col-sm-2 control-label">Status</label>
                                           <div class="col-sm-10">
                                             <select class="form-control m-bot15" name="status">
-                                              <option value="active">Active</option>
-                                              <option value="inactive">Innactive</option>
+                                              <option value="active" <?php if($user['status']=='active') echo 'selected="selected"'; ?>>Active</option>
+                                              <option value="inactive" <?php if($user['status']=='inactive') echo 'selected="selected"'; ?>>Innactive</option>
                                           </select>
                                           </div>
-                                      </div>
+                                      </div> <!--
                                       <div class="form-group">
-                                          <button type="submit" name="submitbtn">Submit</button>
+                                          <input type="hidden" name="id" value="<?php //echo $user['id'];?>">
+                                      </div> -->
+                                      <div class="form-group">
+                                          <button type="submit" name="savebtn">Submit</button>
                                       </div>
                                   </form>
                               </div>

@@ -20,8 +20,11 @@
                   <!-- page start-->
                   
                   <div class="row">
+                    <?php DisplayMessage(); 
+                     ?>
                       <div class="col-lg-12">
                           <section class="panel">
+                            
                               <header class="panel-heading">
                                   Advanced Table
                               </header>
@@ -40,6 +43,7 @@
                                   <?php
                                   $users = GetUsers($conn);
                                   if($users):
+                                    
                                     foreach ($users as $key => $value):
                                     ?>
                                   <tr>
@@ -48,11 +52,11 @@
                                      <td><?php echo $value['email']; ?></td>
                                      <td><?php echo $value['contact']; ?></td>
                                      <td><?php echo $value['role']; ?></td>
-                                     <td><?php echo $value['status']; ?></td>
+                                     <td><?php echo $value['status'];?></td>
                                      <td>
                                       <div class="btn-group">
                                           <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
-                                          <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
+                                          <a class="btn btn-success" href="updateusers.php?ref=<?php echo $value['id']; ?>"><i class="icon_check_alt2"></i></a>
                                           <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
                                       </div>
                                       </td>
