@@ -2,7 +2,7 @@
 
 function Verify($conn,$data){
 	$data['password'] = md5($data['password']);
-	$stmt = $conn->prepare("SELECT * FROM table_admin WHERE email=:email AND password=:pass");
+	$stmt = $conn->prepare("SELECT * FROM table_admin WHERE email=:email AND password=:pass AND status='active'");
 	$stmt->bindParam(':email',$data['email']);
 	$stmt->bindParam(':pass',$data['password']);
 	if($stmt->execute()){

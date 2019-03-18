@@ -88,7 +88,7 @@ function UpdateData($conn,$data,$tableName,$id){
 	}
 	$stmt->bindParam(":id",$id);
 
-	
+
 	try{
 		if($stmt->execute()){
 			return true;
@@ -97,6 +97,19 @@ function UpdateData($conn,$data,$tableName,$id){
 	}
 	catch(Exception $e){
 		echo $e->getMessage();
+	}
+}
+
+
+
+function DeleteData($conn,$id){
+	$stmt= $conn->prepare("DELETE FROM table_admin WHERE id=:id");
+	$stmt->bindParam(":id",$id);
+	if($stmt->execute()){
+		return true;
+	}
+	else{
+		return false;
 	}
 }
 

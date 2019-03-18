@@ -55,9 +55,9 @@
                                      <td><?php echo $value['status'];?></td>
                                      <td>
                                       <div class="btn-group">
-                                          <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
-                                          <a class="btn btn-success" href="updateusers.php?ref=<?php echo $value['id']; ?>"><i class="icon_check_alt2"></i></a>
-                                          <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
+                                          <a class="btn btn-primary" href="#"><i class="icon_check_alt2"></i></a>
+                                          <a class="btn btn-success" href="updateusers.php?ref=<?php echo $value['id']; ?>"><i class="icon_plus_alt2"></i></a>
+                                          <a class="btn btn-danger" href="deleteuser.php?ref=<?php echo $value['id']?>" onclick="return confirm('You Sure?');"><i class="icon_close_alt2"></i></a>
                                       </div>
                                       </td>
                                   </tr>
