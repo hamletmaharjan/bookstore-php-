@@ -18,6 +18,8 @@
                         <ul class="sub">
                             <li><a class="" href="adduser.php">Add Users</a></li>                          
                             <li><a class="" href="manageusers.php">Manage Users</a></li>
+                            <li><a class="" href="addbook.php">Add Book</a></li>
+                            <li><a class="" href="managebooks.php">Manage Book</a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">
