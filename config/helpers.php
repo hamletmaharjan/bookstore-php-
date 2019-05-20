@@ -43,4 +43,27 @@ function DisplayMessage(){
 
 }
 
+
+function UploadFile($path,$file){
+	//dd($file);
+	$source = $file['tmp_name'];
+	$oldName = $file['name'];
+	$temp = explode('.', $oldName);
+	$newName = md5(rand(111111,999999).time().$temp[0]).'.'.$temp[1];
+	
+	dd($path);
+	if(!is_dir($path)){
+		mkdir($path,777);
+	}
+
+	if(move_uploaded_file($source,$path.'/'.$newName)){
+		return $newName;
+	}
+	else{
+		return false;
+	}
+
+
+}
+
 ?>

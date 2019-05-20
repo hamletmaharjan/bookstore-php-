@@ -36,6 +36,10 @@ include 'layouts/sidebar.php';
                                      <th><i class="#"></i> Publisher</th>
                                      <th><i class="icon_cogs"></i> Action</th>
                                   </tr>
+                                  <?php
+                                  	$books = GetBooks($conn);
+                                  	dd($books);
+                                   ?>
                                   <!--
                                   <?php
                                   $users = GetUsers($conn);

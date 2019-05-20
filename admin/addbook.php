@@ -1,6 +1,15 @@
 <?php
 include 'layouts/header.php';
 include 'layouts/sidebar.php';
+
+if(isset($_POST['submitbtn'])){
+	echo "fuck yes";
+	$_POST['cover'] = UploadFile('uploads',$_FILES['file']);
+	
+	//dd($_POST);
+
+}
+
 ?>
 
 
@@ -26,7 +35,7 @@ include 'layouts/sidebar.php';
                                 User Form 
                               </header>
                               <div class="panel-body">
-                                  <form class="form-horizontal " method="POST">
+                                  <form class="form-horizontal " method="POST" enctype="multipart/form-data">
                                       <div class="form-group">
                                           <label class="col-sm-2 control-label">Book Title</label>
                                           <div class="col-sm-10">
@@ -34,11 +43,66 @@ include 'layouts/sidebar.php';
                                           </div>
                                       </div>
                                       <div class="form-group">
-                                          <label class="col-sm-2 control-label">price</label>
+                                          <label class="col-sm-2 control-label">Price</label>
                                           <div class="col-sm-10">
                                               <input type="number" name="price" class="form-control">
                                           </div>
-                                     
+                                     </div>
+                                     <div class="form-group">
+                                          <label class="col-sm-2 control-label">Author</label>
+                                          <div class="col-sm-10">
+                                            <select class="form-control m-bot15" name="author_id">
+                                            	<?php $authors = GetAuthors($conn);
+                                            	dd($authors);
+                                            	?>
+                                              <option value="academics">Academics</option>
+                                              <option value="biography">Biography</option>
+                                              <option value="fiction">Fiction</option>
+                                              <option value="history">History</option>
+                                              <option value="medical science">Medical Science</option>
+                                              <option value="poetry">Poetry</option>
+                                              <option value="others">Others</option>
+                                          </select>
+                                          </div>
+                                      </div>
+                                     <div class="form-group">
+                                          <label class="col-sm-2 control-label">Categories</label>
+                                          <div class="col-sm-10">
+                                            <select class="form-control m-bot15" name="categories">
+                                              <option value="academics">Academics</option>
+                                              <option value="biography">Biography</option>
+                                              <option value="fiction">Fiction</option>
+                                              <option value="history">History</option>
+                                              <option value="medical science">Medical Science</option>
+                                              <option value="poetry">Poetry</option>
+                                              <option value="others">Others</option>
+                                          </select>
+                                          </div>
+                                      </div>
+                                     <div class="form-group">
+                                          <label class="col-sm-2 control-label">Pages</label>
+                                          <div class="col-sm-10">
+                                              <input type="number" name="pages" class="form-control">
+                                          </div>
+                                     </div>
+                                     <div class="form-group">
+                                          <label class="col-sm-2 control-label">Published Date</label>
+                                          <div class="col-sm-10">
+                                              <input type="date" name="published_date" class="form-control">
+                                          </div>
+                                     </div>
+                                     <div class="form-group">
+                                          <label class="col-sm-2 control-label">Publisher</label>
+                                          <div class="col-sm-10">
+                                              <input type="text" name="publisher" class="form-control">
+                                          </div>
+                                     </div>
+                                     <div class="form-group">
+                                          <label class="col-sm-2 control-label">Cover</label>
+                                          <div class="col-sm-10">
+                                              <input type="file" name="file" class="form-control">
+                                          </div>
+                                     </div>
                                       <div class="form-group">
                                           <button type="submit" name="submitbtn">Submit</button>
                                       </div>

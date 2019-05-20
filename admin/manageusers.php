@@ -42,6 +42,7 @@
                                   </tr>
                                   <?php
                                   $users = GetUsers($conn);
+                                
                                   if($users):
                                     
                                     foreach ($users as $key => $value):
