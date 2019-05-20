@@ -15,12 +15,27 @@
                             <span>Admin Users</span>
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
+                        <?php
+                        if($_SESSION['role']=='superadmin'){
+                         ?>
                         <ul class="sub">
                             <li><a class="" href="adduser.php">Add Users</a></li>                          
                             <li><a class="" href="manageusers.php">Manage Users</a></li>
                             <li><a class="" href="addbook.php">Add Book</a></li>
                             <li><a class="" href="managebooks.php">Manage Book</a></li>
                         </ul>
+                        <?php
+                        }
+                        else{
+                         ?>
+                         <ul class="sub">
+                            <li><a class="" href="addbook.php">Add Book</a></li>
+                            <li><a class="" href="managebooks.php">Manage Book</a></li>
+                        </ul>
+                        <?php
+                        }
+                         ?>
+
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
