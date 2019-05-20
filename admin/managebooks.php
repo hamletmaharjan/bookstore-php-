@@ -18,6 +18,7 @@ include 'layouts/sidebar.php';
                   <!-- page start-->
                   
                   <div class="row">
+                    <?php DisplayMessage(); ?>
                       <div class="col-lg-12">
                           <section class="panel">
                             
@@ -29,36 +30,37 @@ include 'layouts/sidebar.php';
                                <tbody>
                                   <tr>
                                      <th><i class="#"></i></th>
-                                     <th><i class="icon_profile"></i>Book Title</th>
-                                     <th><i class="icon_mail_alt"></i> Price</th>
-                                     <th><i class="icon_mobile"></i> Author</th>
-                                     <th><i class="#"></i> Age</th>
+                                     <th><i class="#"></i>Book Title</th>
+                                     <th><i class="#"></i> Price</th>
+                                     <th><i class="#"></i> Author</th>
+                                     <th><i class="#"></i> Categories</th>
+                                     <th><i class="#"></i> Pages</th>
+                                     <th><i class="#"></i> Published Date</th>
                                      <th><i class="#"></i> Publisher</th>
-                                     <th><i class="icon_cogs"></i> Action</th>
                                   </tr>
                                   <?php
                                   	$books = GetBooks($conn);
                                   	dd($books);
-                                   ?>
-                                  <!--
-                                  <?php
-                                  $users = GetUsers($conn);
-                                  if($users):
+                                  if($books):
                                     
-                                    foreach ($users as $key => $value):
+                                    foreach ($books as $key => $value):
                                     ?>
                                   <tr>
                                      <td><?php echo ++$key; ?></td>
-                                     <td><?php echo ucwords($value['first_name']." ".$value['last_name']); ?></td>
-                                     <td><?php echo $value['email']; ?></td>
-                                     <td><?php echo $value['contact']; ?></td>
-                                     <td><?php echo $value['role']; ?></td>
-                                     <td><?php echo $value['status'];?></td>
+                                     <td><?php echo ucwords($value['title']); ?></td>
+                                     <td><?php echo $value['price']; ?></td>
+                                     <td><?php echo ucwords($value['a_firstname'].' '.$value['a_lastname']); ?></td>
+                                     <td><?php echo $value['categories']; ?></td>
+                                     <td><?php echo $value['pages'];?></td>
+                                     <td><?php echo $value['published_date'];?></td>
+                                     <td><?php echo $value['publisher'];?></td>
+
                                      <td>
                                       <div class="btn-group">
                                           <a class="btn btn-primary" href="#"><i class="icon_check_alt2"></i></a>
+                                          <!--
                                           <a class="btn btn-success" href="updateusers.php?ref=<?php echo $value['id']; ?>"><i class="icon_plus_alt2"></i></a>
-                                          <a class="btn btn-danger" href="deleteuser.php?ref=<?php echo $value['id']?>" onclick="return confirm('You Sure?');"><i class="icon_close_alt2"></i></a>
+                                          <a class="btn btn-danger" href="deleteuser.php?ref=<?php echo $value['id']?>" onclick="return confirm('You Sure?');"><i class="icon_close_alt2"></i></a> -->
                                       </div>
                                       </td>
                                   </tr>

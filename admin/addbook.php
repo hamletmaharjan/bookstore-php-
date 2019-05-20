@@ -2,12 +2,13 @@
 include 'layouts/header.php';
 include 'layouts/sidebar.php';
 
-
+$msg='';
 if(isset($_POST['submitbtn'])){
 	echo "works";
 	$_POST['cover'] = UploadFile('uploads',$_FILES['file']);
 	if(InsertData($conn,$_POST,"table_book")){
-		echo "works too";
+		ShowMessage("Book added successfully","success");
+		redirection('managebooks.php');
 	}
 
 }
