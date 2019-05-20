@@ -2,11 +2,13 @@
 include 'layouts/header.php';
 include 'layouts/sidebar.php';
 
+
 if(isset($_POST['submitbtn'])){
-	echo "fuck yes";
+	echo "works";
 	$_POST['cover'] = UploadFile('uploads',$_FILES['file']);
-	
-	//dd($_POST);
+	if(InsertData($conn,$_POST,"table_book")){
+		echo "works too";
+	}
 
 }
 
@@ -53,15 +55,17 @@ if(isset($_POST['submitbtn'])){
                                           <div class="col-sm-10">
                                             <select class="form-control m-bot15" name="author_id">
                                             	<?php $authors = GetAuthors($conn);
-                                            	dd($authors);
-                                            	?>
-                                              <option value="academics">Academics</option>
-                                              <option value="biography">Biography</option>
-                                              <option value="fiction">Fiction</option>
-                                              <option value="history">History</option>
-                                              <option value="medical science">Medical Science</option>
-                                              <option value="poetry">Poetry</option>
-                                              <option value="others">Others</option>
+                                            	
+                                            	if($authors):
+                                            		foreach ($authors as $key => $value):
+                                            		?>
+														<option value="<?php echo $value['a_id'] ?>"><?php echo $value['a_firstname'] ?></option>
+			                                        <?php endforeach;
+
+			                                    else:
+			                                        ?>
+			                                        	<option value="null">no data found</option>
+			                                    <?php endif; ?>
                                           </select>
                                           </div>
                                       </div>
