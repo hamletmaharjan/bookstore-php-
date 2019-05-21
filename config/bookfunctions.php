@@ -72,5 +72,18 @@ function UpdateBook($conn,$data,$tableName,$id){
 	}
 }
 
+function DeleteBookById($conn,$id){
+	$book = GetBookById($conn,$id);
+	$stmt= $conn->prepare("DELETE FROM table_book WHERE b_id=:id");
+	$stmt->bindParam(":id",$id);
+	if($stmt->execute()){
+		@unlink("uploads/".$book['cover']);
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
 
 ?>

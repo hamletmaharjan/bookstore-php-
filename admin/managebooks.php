@@ -40,7 +40,7 @@ include 'layouts/sidebar.php';
                                   </tr>
                                   <?php
                                   	$books = GetBooks($conn);
-                                  	dd($books);
+                                  
                                   if($books):
                                     
                                     foreach ($books as $key => $value):

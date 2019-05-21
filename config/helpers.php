@@ -51,7 +51,6 @@ function UploadFile($path,$file){
 	$temp = explode('.', $oldName);
 	$newName = md5(rand(111111,999999).time().$temp[0]).'.'.$temp[1];
 	
-	dd($path);
 	if(!is_dir($path)){
 		mkdir($path,777);
 	}
