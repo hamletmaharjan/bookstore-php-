@@ -89,8 +89,12 @@ if(isset($_POST['savebtn'])){
                                           <input type="hidden" name="id" value="<?php //echo $user['id'];?>">
                                       </div> -->
                                       <div class="form-group">
-                                          <button type="submit" name="savebtn">Submit</button>
-                                      </div>
+                                            <div class="col-lg-offset-2 col-lg-10">
+                                                <button type="submit" name="savebtn"class="btn btn-primary">save</button>
+                                                <button type="button" class="btn btn-danger">Cancel</button>
+                                            </div>
+                     
+                                     </div>
                                   </form>
                               </div>
                           </section>

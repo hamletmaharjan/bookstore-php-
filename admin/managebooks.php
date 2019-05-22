@@ -37,6 +37,7 @@ include 'layouts/sidebar.php';
                                      <th><i class="#"></i> Pages</th>
                                      <th><i class="#"></i> Published Date</th>
                                      <th><i class="#"></i> Publisher</th>
+                                     <th><i class="#"></i> Action</th>
                                   </tr>
                                   <?php
                                   	$books = GetBooks($conn);

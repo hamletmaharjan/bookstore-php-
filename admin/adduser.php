@@ -89,8 +89,12 @@ if(isset($_POST['submitbtn'])){
                                           </div>
                                       </div>
                                       <div class="form-group">
-                                          <button type="submit" name="submitbtn">Submit</button>
-                                      </div>
+                                            <div class="col-lg-offset-2 col-lg-10">
+                                                <button type="submit" name="submitbtn"class="btn btn-primary">Submit</button>
+                                                <button type="button" class="btn btn-danger">Cancel</button>
+                                            </div>
+                     
+                                     </div>
                                   </form>
                               </div>
                           </section>

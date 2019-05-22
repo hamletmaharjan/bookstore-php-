@@ -29,7 +29,7 @@ if(isset($_POST['savebtn'])){
               <section class="wrapper">
     		  <div class="row">
     				<div class="col-lg-12">
-    					<h3 class="page-header"><i class="fa fa-file-text-o"></i> Update Book <?php dd($book); ?></h3>
+    					<h3 class="page-header"><i class="fa fa-file-text-o"></i> Update Book</h3>
     					<ol class="breadcrumb">
     						<li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
     						<li><i class="icon_document_alt"></i>Books</li>
@@ -68,7 +68,7 @@ if(isset($_POST['savebtn'])){
                                             	if($authors):
                                             		foreach ($authors as $key => $value):
                                             		?>
-														                    <option value="<?php echo $value['a_id'] ?>"<?php if($value['a_id']==$book['author_id']) echo 'selected="selected"';?>><?php echo $value['a_firstname'] ?></option>
+														                    <option value="<?php echo $value['a_id'] ?>"<?php if($value['a_id']==$book['author_id']) echo 'selected="selected"';?>><?php echo $value['a_firstname']." ".$value['a_lastname']; ?></option>
 			                                        <?php endforeach;
 
 			                                    else:
@@ -126,8 +126,12 @@ if(isset($_POST['savebtn'])){
                                           </div>
                                      </div>
                                       <div class="form-group">
-                                          <button type="submit" name="savebtn">Save</button>
-                                      </div>
+                                            <div class="col-lg-offset-2 col-lg-10">
+                                                <button type="submit" name="savebtn"class="btn btn-primary">save</button>
+                                                <button type="button" class="btn btn-danger">Cancel</button>
+                                            </div>
+                     
+                                     </div>
                                   </form>
                               </div>
                           </section>

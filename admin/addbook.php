@@ -60,7 +60,7 @@ if(isset($_POST['submitbtn'])){
                                             	if($authors):
                                             		foreach ($authors as $key => $value):
                                             		?>
-														<option value="<?php echo $value['a_id'] ?>"><?php echo $value['a_firstname'] ?></option>
+														<option value="<?php echo $value['a_id'] ?>"><?php echo $value['a_firstname']." ".$value['a_lastname']; ?></option>
 			                                        <?php endforeach;
 
 			                                    else:
@@ -108,9 +108,14 @@ if(isset($_POST['submitbtn'])){
                                               <input type="file" name="file" class="form-control">
                                           </div>
                                      </div>
-                                      <div class="form-group">
-                                          <button type="submit" name="submitbtn">Submit</button>
-                                      </div>
+                                     <div class="form-group">
+                                            <div class="col-lg-offset-2 col-lg-10">
+                                                <button type="submit" name="submitbtn"class="btn btn-primary">Submit</button>
+                                                <button type="button" class="btn btn-danger">Cancel</button>
+                                            </div>
+                     
+                                     </div>
+                                     
                                   </form>
                               </div>
                           </section>

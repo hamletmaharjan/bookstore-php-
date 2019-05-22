@@ -20,6 +20,7 @@ function Verify($conn,$data){
 		if(!$info==NULL){
 			$_SESSION['email'] = $info['email'];
 			$_SESSION['role'] = $info['role'];
+			$_SESSION['id'] = $info['id'];
 			$_SESSION['user'] = $info['first_name'].' '.$info['last_name'];
 			return true;
 		}
