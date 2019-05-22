@@ -56,8 +56,8 @@ include 'layouts/sidebar.php';
                                       <div class="btn-group">
                                           <a class="btn btn-primary" href="#"><i class="icon_check_alt2"></i></a>
                                           
-                                          <a class="btn btn-success" href="updateauthor.php?ref=<?php echo $value['a_id']; ?>"><i class="icon_plus_alt2"></i></a>
-                                          <a class="btn btn-danger" href="deleteauthor.php?ref=<?php echo $value['a_id']?>" onclick="return confirm('You Sure?');"><i class="icon_close_alt2"></i></a> 
+                                          <a class="btn btn-success" href="updateauthor.php?ref=<?php echo $value['a_id']; ?>"><i class="icon_plus_alt2"></i></a> 
+                                          <a class="btn btn-danger" href="deleteauthor.php?ref=<?php echo $value['a_id']?>" onclick="return confirm('You Sure?');"><i class="icon_close_alt2"></i></a>  
                                       </div>
                                       </td>
                                   </tr>

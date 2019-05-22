@@ -13,6 +13,18 @@ function GetAuthorById($conn,$id){
 	}
 }
 
+function DeleteAuthorById($conn,$id){
+	$book = GetBookById($conn,$id);
+	$stmt= $conn->prepare("DELETE FROM table_author WHERE a_id=:id");
+	$stmt->bindParam(":id",$id);
+	if($stmt->execute()){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
 function UpdateAuthor($conn,$data,$tableName,$id){
 
 //$stmt = $conn->prepare("UPDATE user SET user=:user, pass=:pass, status=:status where id=:id";
@@ -49,6 +61,8 @@ function UpdateAuthor($conn,$data,$tableName,$id){
 		echo $e->getMessage();
 	}
 }
+
+
 
 
 ?>
