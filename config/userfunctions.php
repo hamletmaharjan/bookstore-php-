@@ -113,27 +113,6 @@ function DeleteData($conn,$id){
 	}
 }
 
-function GetUserDetails($conn,$data){
-	$stmt = $conn->prepare("SELECT * FROM table_admin WHERE email=:email AND password=:pass");
-	$stmt->bindParam(':email',$data['email']);
-	$stmt->bindParam(':pass',$data['password']);
-	if($stmt->execute()){
-		
-		$stmt->setFetchMode(PDO::FETCH_ASSOC);
-		/* 
-		if($stmt->rowCount()>0){
-			$info = $stmt->fetch();
-			print_r($info);
-			return true;
-		}
-		*/
 
-		return $stmt->fetch();
-	
-	}
-	else{
-		return false;
-	}
-}
 
 ?>

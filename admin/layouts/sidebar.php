@@ -22,7 +22,7 @@
                             <li><a class="" href="adduser.php">Add Users</a></li>                          
                             <li><a class="" href="manageusers.php">Manage Users</a></li>
                             <li><a class="" href="addbook.php">Add Book</a></li>
-                            <li><a class="" href="managebooks.php">Manage Book</a></li>
+                            <li><a class="" href="managebooks.php">Manage Books</a></li>
                         </ul>
                         <?php
                         }
@@ -30,13 +30,24 @@
                          ?>
                          <ul class="sub">
                             <li><a class="" href="addbook.php">Add Book</a></li>
-                            <li><a class="" href="managebooks.php">Manage Book</a></li>
+                            <li><a class="" href="managebooks.php">Manage Books</a></li>
                         </ul>
                         <?php
                         }
                          ?>
 
                     </li>
+                     <li class="sub-menu">
+                        <a href="javascript:;" class="">
+                            <i class="icon_document_alt"></i>
+                            <span>Tasks</span>
+                            <span class="menu-arrow arrow_carrot-right"></span>
+                        </a>
+                        <ul class="sub">
+                            <li><a class="" href="addauthor.php">Add Author</a></li>                          
+                            <li><a class="" href="manageauthors.php">Manage Authors</a></li>
+                        </ul>
+                    </li> 
                     <li class="sub-menu">
                         <a href="javascript:;" class="">
                             <i class="icon_document_alt"></i>
