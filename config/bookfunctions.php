@@ -85,5 +85,18 @@ function DeleteBookById($conn,$id){
 	}
 }
 
+function GetBookDetails($conn,$id){
+	$stmt = $conn->prepare("SELECT * FROM table_book inner join table_author on table_book.author_id = table_author.a_id WHERE b_id = :id");
+	$stmt->bindParam(":id",$id);
+	$stmt->execute();
+	$stmt->setFetchMode(PDO::FETCH_ASSOC);
+	if($stmt->rowCount()>0){
+		return $stmt->fetch();
+	}
+	else{
+		return false;
+	}
+}
+
 
 ?>

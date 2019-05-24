@@ -7,7 +7,8 @@ if(isset($_POST['submitbtn'])){
 	dd($_POST);
 	
 	if(InsertData($conn,$_POST,"table_author")){
-		echo "done";
+		ShowMessage("Data Added Successfully","success");
+    redirection("manageauthors.php");
 	}
 }
 

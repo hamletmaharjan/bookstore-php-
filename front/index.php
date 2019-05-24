@@ -22,9 +22,9 @@ include 'layouts/frontheader.php';
                 <div class="row feature_inner">
                     <div class="col-lg-5">
                         <div class="f_add_item">
-                            <div class="f_add_img"><img class="img-fluid" src="img/feature-add/f-add-1.jpg" alt=""></div>
+                            <div class="f_add_img"><img class="img-fluid" src="img/feature-add/old-books.jpg" alt=""></div>
                             <div class="f_add_hover">
-                                <h4>Best Summer <br />Collection</h4>
+                                <h4>Old Books <br />Collection</h4>
                                 <a class="add_btn" href="#">Shop Now <i class="arrow_right"></i></a>
                             </div>
                             <div class="sale">Sale</div>
@@ -69,7 +69,7 @@ include 'layouts/frontheader.php';
                             </div>
                             <div class="l_p_text">
                                 <ul>
-                                    <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
+                                    <li class="p_icon"><a href="productdetails.php?ref=<?php echo $value['b_id']?>"><i class="icon_piechart"></i></a></li>
                                     <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
                                     <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                                 </ul>
@@ -79,6 +79,39 @@ include 'layouts/frontheader.php';
                         </div>
                     </div>
                 <?php endforeach; ?>
+                 
+                </div>
+            </div>
+        </section>
+        <section class="our_latest_product">
+            <div class="container">
+                <div class="s_m_title">
+                    <h2>Lastest Books</h2>
+                </div>
+                <div class="l_product_slider owl-carousel">
+                	<?php
+                	$books = GetBooks($conn);
+					
+					foreach ($books as $key => $value):
+						if($value['published_date']>="2018-01-01"):
+                	?>
+                    <div class="item">
+                        <div class="l_product_item">
+                            <div class="l_p_img">
+                                <img src="../admin/uploads/<?php echo $value['cover']; ?>" alt="" width="150px" height="350px">
+                            </div>
+                            <div class="l_p_text">
+                                <ul>
+                                    <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
+                                    <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
+                                    <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
+                                </ul>
+                                <h4><?php echo $value['title']; ?></h4>
+                                <h5>Rs <?php echo $value['price']; if($key>=5) break; ?></h5>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; endforeach; ?>
                  
                 </div>
             </div>
