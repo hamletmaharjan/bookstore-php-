@@ -60,7 +60,12 @@ $book = GetBookDetails($conn,$bookId);
                             </div>
                             <h6>Available In <span>Stock</span></h6>
                             <h4>Rs <?php echo $book['price'];?></h4>
-                            <p>Curabitur semper varius lectus sed consequat. Nam accumsan dapibus sem, sed lobortis nisi porta vitae. Ut quam tortor, facilisis nec laoreet consequat, malesuada a massa. Proin pretium tristique leo et imperdiet.</p>
+                            <p>Author: <?php echo $book['a_firstname']." ".$book['a_lastname']; ?></p>
+                            <p><span>Categories</span>: <?php echo $book['categories']; ?></p>
+                            <p>Pages: <?php echo $book['pages']; ?></p>
+                            <p>Published Date: <?php echo $book['published_date']; ?></p>
+                            <p>Publisher: <?php echo $book['publisher']; ?></p>
+
                             <div class="p_color">
                                 <h4 class="p_d_title">color <span>*</span></h4>
                                 <ul class="color_list">
@@ -149,12 +154,16 @@ $book = GetBookDetails($conn,$bookId);
         <section class="related_product_area">
             <div class="container">
                 <div class="related_product_inner">
-                    <h2 class="single_c_title">Related Product</h2>
+                    <h2 class="single_c_title">Related Books/ More by <?php echo $book['a_firstname']." ".$book['a_lastname']; ?></h2>
                     <div class="row">
+                    	<?php
+                    	$relatedBook = GetBooksByAuthor($conn,$book['author_id']);
+                    	foreach ($relatedBook as $key => $value):
+                    	?>
                         <div class="col-lg-3 col-sm-6">
                             <div class="l_product_item">
                                 <div class="l_p_img">
-                                    <img class="img-fluid" src="img/product/related-product/r-product-1.jpg" alt="">
+                                    <img class="" src="../admin/uploads/<?php echo $value['cover'];?>" alt="" height="350px" width="100%">
                                 </div>
                                 <div class="l_p_text">
                                    <ul>
@@ -162,61 +171,13 @@ $book = GetBookDetails($conn,$bookId);
                                         <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
                                         <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                                     </ul>
-                                    <h4>Run Tracksuit</h4>
-                                    <h5>$85.50</h5>
+                                    <h4><?php echo $value['title']; ?></h4>
+                                    <h5>Rs <?php echo $value['price'] ?></h5>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="l_product_item">
-                                <div class="l_p_img">
-                                    <img class="img-fluid" src="img/product/related-product/r-product-2.jpg" alt="">
-                                    <h5 class="new">New</h5>
-                                </div>
-                                <div class="l_p_text">
-                                   <ul>
-                                        <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
-                                        <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
-                                        <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
-                                    </ul>
-                                    <h4>Nike Men Trouser</h4>
-                                    <h5><del>$130.50</del>  $110</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="l_product_item">
-                                <div class="l_p_img">
-                                    <img class="img-fluid" src="img/product/related-product/r-product-3.jpg" alt="">
-                                </div>
-                                <div class="l_p_text">
-                                   <ul>
-                                        <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
-                                        <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
-                                        <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
-                                    </ul>
-                                    <h4>Nike Track Pants</h4>
-                                    <h5>$250.00</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="l_product_item">
-                                <div class="l_p_img">
-                                    <img class="img-fluid" src="img/product/related-product/r-product-4.jpg" alt="">
-                                    <h5 class="sale">Sale</h5>
-                                </div>
-                                <div class="l_p_text">
-                                   <ul>
-                                        <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
-                                        <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
-                                        <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
-                                    </ul>
-                                    <h4>Therma Pants</h4>
-                                    <h5>$45.50</h5>
-                                </div>
-                            </div>
-                        </div>
+                    <?php endforeach; ?>
+                     
                     </div>
                     <nav aria-label="Page navigation example" class="pagination_area">
                       <ul class="pagination">

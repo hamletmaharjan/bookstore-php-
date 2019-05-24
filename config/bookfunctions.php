@@ -98,5 +98,17 @@ function GetBookDetails($conn,$id){
 	}
 }
 
+function GetBooksByAuthor($conn,$authorId){
+	$stmt = $conn->prepare("SELECT * FROM table_book inner join table_author on table_book.author_id = table_author.a_id WHERE author_id = :authorid");
+	$stmt->bindParam(":authorid",$authorId);
+	$stmt->execute();
+	if($stmt->rowCount()>0){
+		return $stmt->fetchAll();
+	}
+	else{
+		return false;
+	}
+}
+
 
 ?>

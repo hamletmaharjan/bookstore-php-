@@ -4,7 +4,6 @@ include 'layouts/sidebar.php';
 
 $bookId = $_GET['ref'];
 $book = GetBookById($conn,$bookId);
-dd($book);
 
 if(isset($_POST['savebtn'])){
   if(isset($_FILES['file'])){
