@@ -110,5 +110,17 @@ function GetBooksByAuthor($conn,$authorId){
 	}
 }
 
+function Pagination($conn,$offset){
+	$stmt = $conn->prepare("SELECT * FROM table_book inner join table_author on table_book.author_id = table_author.a_id lIMIT ".$offset ." ,8");
+	//$stmt->bindParam(":os",$offset);
+	$stmt->execute();
+	if($stmt->rowCount()>0){
+		return $stmt->fetchAll();
+	}
+	else{
+		return false;
+	}
+}
+
 
 ?>

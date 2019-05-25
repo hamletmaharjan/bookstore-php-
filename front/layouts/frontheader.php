@@ -115,7 +115,7 @@ include '../config/call.php';
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav categories">
                             <li class="nav-item">
-                                <select class="selectpicker">
+                                <select class="selectpicker" href="booklist.php">
                                     <option>Academics</option>
                                     <option>Biography</option>
                                     <option>Fiction</option>
@@ -146,9 +146,10 @@ include '../config/call.php';
                                 Pages <i class="fa fa-angle-down" aria-hidden="true"></i>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="compare.html">Popular Books</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="checkout.html">Recent Books</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="register.html">Cheapest Books</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="booklist.php?ref=pb">Popular Books</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="booklist.php?ref=rb">Recent Books</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="booklist.php?ref=cb">Cheapest Books</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="booklist.php?ref=ab">All Books</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown submenu">
