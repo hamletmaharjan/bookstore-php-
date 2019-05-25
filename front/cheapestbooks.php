@@ -1,72 +1,7 @@
 <?php
 include 'layouts/frontheader.php';
 
-$b = $_GET['ref'];
 
-if(isset($_GET['page'])){
-	$page = $_GET['page'];
-}
-else {
-	$page = 1;
-}
-$bookType = substr($b,0,2);
-$books;
-$count=0;
-$resultsPerPage = 8;
-$totalPages = 0;
-$offset = 0;
-switch ($bookType) {
-	case 'pb':
-		$books = "crap";
-		break;
-
-	case 'lb':
-		$book = GetBooks($conn);
-		foreach ($book as $key => $value) {
-			if($value['published_date']>="2018-01-01"){
-				$count++;
-			}
-			
-		}
-		$totalPages = ceil($count/$resultsPerPage);
-		$offset = ($page - 1) * $resultsPerPage; 
-		$books = LatestBooks($conn,$offset,"2018-01-01");
-
-		break;
-
-	case 'cb':
-		$book = GetBooks($conn);
-		foreach ($book as $key => $value) {
-			if($value['price']<=1000){
-				$count++;
-			}
-			
-		}
-		$totalPages = ceil($count/$resultsPerPage);
-		$offset = ($page - 1) * $resultsPerPage; 
-		$books = CheapestBooks($conn,$offset,1000);
-		break;
-
-	case 'ab':
-		$book = GetBooks($conn);
-		foreach ($book as $key => $value) {
-			$count++;
-		}
-		$totalPages = ceil($count/$resultsPerPage);
-		$offset = ($page - 1) * $resultsPerPage; 
-		$books = Pagination($conn,$offset);
-		break;
-	
-	default:
-		$book = GetBooks($conn);
-		foreach ($book as $key => $value) {
-			$count++;
-		}
-		$totalPages = ceil($count/$resultsPerPage);
-		$offset = ($page - 1) * $resultsPerPage; 
-		$books = Pagination($conn,$offset);
-		break;
-}
 
 ?>
 
@@ -76,8 +11,7 @@ switch ($bookType) {
                 <div class="showing_fillter">
                     <div class="row m0">
                         <div class="first_fillter">
-                            <h4><?php $temp = $offset+$resultsPerPage;
-                            echo "Showing ".($offset+1)." to ".$temp." of ".$count; ?></h4>
+                            <h4>Cheapest Books</h4>
                         </div>
                         <div class="secand_fillter">
                             <h4>SORT BY :</h4>
@@ -107,9 +41,10 @@ switch ($bookType) {
                     	<?php
                     	//$offset = ($page - 1) * $resultsPerPage; 
                     	
-
+                    	$books = GetBooks($conn);
                     	if($books):
-                    		foreach ($books as $key => $value):		
+                    		foreach ($books as $key => $value):
+                    		if($value['price']<=500):	
                     	?>
                         <div class="col-lg-3 col-sm-6">
                             <div class="l_product_item">
@@ -118,7 +53,7 @@ switch ($bookType) {
                                 </div>
                                 <div class="l_p_text">
                                    <ul>
-                                        <li class="p_icon"><a href="productdetails.php?ref=<?php echo $value['b_id']?>"><i class="icon_piechart"></i></a></li>
+                                        <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
                                         <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
                                         <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                                     </ul>
@@ -127,14 +62,14 @@ switch ($bookType) {
                                 </div>
                             </div>
                         </div>
-                       	<?php endforeach; endif; ?>
+                       	<?php endif; endforeach; endif; ?>
                         
                     </div>
                     <nav aria-label="Page navigation example" class="pagination_area">
                       <ul class="pagination">
-                      	<?php for($page=1; $page <= $totalPages; $page++): ?>
-                        <li class="page-item"><a class="page-link" href="booklist.php?ref=<?php echo $bookType; ?>&amp;page=<?php echo $page; ?>"><?php echo $page; ?></a></li>
-                    <?php endfor;?>
+                      	
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    
                         <li class="page-item next"><a class="page-link" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
                       </ul>
                     </nav>

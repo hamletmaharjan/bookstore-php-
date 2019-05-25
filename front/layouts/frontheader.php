@@ -115,7 +115,7 @@ include '../config/call.php';
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav categories">
                             <li class="nav-item">
-                                <select class="selectpicker" href="booklist.php">
+                                <select class="selectpicker">
                                     <option>Academics</option>
                                     <option>Biography</option>
                                     <option>Fiction</option>
@@ -128,26 +128,14 @@ include '../config/call.php';
                             </li>
                         </ul>
                         <ul class="navbar-nav">
-                            <li class="nav-item dropdown submenu active">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Home <i class="fa fa-angle-down" aria-hidden="true"></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="index.html">Home Simple</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="home-carousel.html">Home Carousel</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="home-fullwidth.html">Home Full Width</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="home-parallax.html">Home Parallax</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="home-sidebar.html">Home Boxed</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="home-fixed-menu.html">Home Fixed</a></li>
-                                </ul>
-                            </li>
+                            <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
                             <li class="nav-item dropdown submenu">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Pages <i class="fa fa-angle-down" aria-hidden="true"></i>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li class="nav-item"><a class="nav-link" href="booklist.php?ref=pb">Popular Books</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="booklist.php?ref=rb">Recent Books</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="booklist.php?ref=lb">Latest Books</a></li>
                                     <li class="nav-item"><a class="nav-link" href="booklist.php?ref=cb">Cheapest Books</a></li>
                                     <li class="nav-item"><a class="nav-link" href="booklist.php?ref=ab">All Books</a></li>
                                 </ul>

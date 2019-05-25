@@ -122,5 +122,29 @@ function Pagination($conn,$offset){
 	}
 }
 
+function CheapestBooks($conn,$offset,$limit){
+	$stmt = $conn->prepare("SELECT * FROM table_book inner join table_author on table_book.author_id = table_author.a_id WHERE price <= :lmt lIMIT ".$offset ." ,8");
+	$stmt->bindParam(":lmt",$limit);
+	$stmt->execute();
+	if($stmt->rowCount()>0){
+		return $stmt->fetchAll();
+	}
+	else{
+		return false;
+	}
+}
+
+function LatestBooks($conn,$offset,$limit){
+	$stmt = $conn->prepare("SELECT * FROM table_book inner join table_author on table_book.author_id = table_author.a_id WHERE published_date >= :lmt lIMIT ".$offset ." ,8");
+	$stmt->bindParam(":lmt",$limit);
+	$stmt->execute();
+	if($stmt->rowCount()>0){
+		return $stmt->fetchAll();
+	}
+	else{
+		return false;
+	}
+}
+
 
 ?>
