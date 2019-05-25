@@ -115,7 +115,8 @@ include '../config/call.php';
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav categories">
                             <li class="nav-item">
-                                <select class="selectpicker">
+                                <select class="selectpicker" name="picker">
+                                    <option>Categories</option>
                                     <option>Academics</option>
                                     <option>Biography</option>
                                     <option>Fiction</option>
@@ -142,26 +143,21 @@ include '../config/call.php';
                             </li>
                             <li class="nav-item dropdown submenu">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Shop <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                Categories <i class="fa fa-angle-down" aria-hidden="true"></i>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="categories-no-sidebar-2column.html">Prodcut No Sidebar</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="categories-no-sidebar-3column.html">Prodcut Two Column</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="categories-no-sidebar-4column.html">Product Grid</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="categories-left-sidebar.html">Categories Left Sidebar</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="categories-right-sidebar.html">Categories Right Sidebar</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="categories-grid-left-sidebar.html">Categories Grid Sidebar</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="product-details.html">Prodcut Details 01</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="product-details2.html">Prodcut Details 02</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="product-details3.html">Prodcut Details 03</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="shopping-cart.html">Shopping Cart 01</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="shopping-cart2.html">Shopping Cart 02</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="empty-cart.html">Empty Cart</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Academics</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Biography</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Fiction</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">History</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Medical Science</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Poetry</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Others</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
                             <li class="nav-item"><a class="nav-link" href="#">lookbook</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
                         </ul>
                     </div>
                 </nav>

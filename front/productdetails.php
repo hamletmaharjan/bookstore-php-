@@ -10,18 +10,7 @@ $book = GetBookDetails($conn,$bookId);
 
 
 <!--================Categories Banner Area =================-->
-        <section class="categories_banner_area">
-            <div class="container">
-                <div class="c_banner_inner">
-                    <h3><?php echo $bookId; if($book){ echo $book['title'];} ?></h3>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Shop</a></li>
-                        <li class="current"><a href="#">Simple Product</a></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+       
         <!--================End Categories Banner Area =================-->
         
         <!--================Product Details Area =================-->
