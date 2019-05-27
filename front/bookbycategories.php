@@ -1,7 +1,7 @@
 <?php
 include 'layouts/frontheader.php';
 
-$b = $_GET['ref'];
+$bookType = $_GET['ref'];
 
 if(isset($_GET['page'])){
 	$page = $_GET['page'];
@@ -9,63 +9,114 @@ if(isset($_GET['page'])){
 else {
 	$page = 1;
 }
-$bookType = substr($b,0,2);
 $books;
 $count=0;
 $resultsPerPage = 8;
 $totalPages = 0;
 $offset = 0;
 switch ($bookType) {
-	case 'pb':
-		$books = "crap";
-		break;
-
-	case 'lb':
+	case 'aca':
 		$book = GetBooks($conn);
 		foreach ($book as $key => $value) {
-			if($value['published_date']>="2018-01-01"){
+			if($value['categories']=="academics"){
 				$count++;
 			}
 			
 		}
 		$totalPages = ceil($count/$resultsPerPage);
-		$offset = ($page - 1) * $resultsPerPage; 
-		$books = LatestBooks($conn,$offset,"2018-01-01");
-
+		$offset = ($page-1)*$resultsPerPage;
+		$books = BooksByCategories($conn,$offset,"academics");
 		break;
 
-	case 'cb':
+	case 'bio':
 		$book = GetBooks($conn);
 		foreach ($book as $key => $value) {
-			if($value['price']<=1000){
+			if($value['categories']=="biography"){
 				$count++;
 			}
 			
 		}
 		$totalPages = ceil($count/$resultsPerPage);
-		$offset = ($page - 1) * $resultsPerPage; 
-		$books = CheapestBooks($conn,$offset,1000);
+		$offset = ($page-1)*$resultsPerPage;
+		$books = BooksByCategories($conn,$offset,"biography");
 		break;
 
-	case 'ab':
+	case 'fic':
 		$book = GetBooks($conn);
 		foreach ($book as $key => $value) {
-			$count++;
+			if($value['categories']=="fiction"){
+				$count++;
+			}
+			
 		}
 		$totalPages = ceil($count/$resultsPerPage);
-		$offset = ($page - 1) * $resultsPerPage; 
-		$books = Pagination($conn,$offset);
+		$offset = ($page-1)*$resultsPerPage;
+		$books = BooksByCategories($conn,$offset,"fiction");
+		break;
+
+	case 'his':
+		$book = GetBooks($conn);
+		foreach ($book as $key => $value) {
+			if($value['categories']=="history"){
+				$count++;
+			}
+			
+		}
+		$totalPages = ceil($count/$resultsPerPage);
+		$offset = ($page-1)*$resultsPerPage;
+		$books = BooksByCategories($conn,$offset,"history");
+		break;
+
+	case 'med':
+		$book = GetBooks($conn);
+		foreach ($book as $key => $value) {
+			if($value['categories']=="medical science"){
+				$count++;
+			}
+			
+		}
+		$totalPages = ceil($count/$resultsPerPage);
+		$offset = ($page-1)*$resultsPerPage;
+		$books = BooksByCategories($conn,$offset,"medical science");
+		break;
+
+	case 'poe':
+		$book = GetBooks($conn);
+		foreach ($book as $key => $value) {
+			if($value['categories']=="poetry"){
+				$count++;
+			}
+			
+		}
+		$totalPages = ceil($count/$resultsPerPage);
+		$offset = ($page-1)*$resultsPerPage;
+		$books = BooksByCategories($conn,$offset,"poetry");
+		break;
+
+	case 'oth':
+		$book = GetBooks($conn);
+		foreach ($book as $key => $value) {
+			if($value['categories']=="others"){
+				$count++;
+			}
+			
+		}
+		$totalPages = ceil($count/$resultsPerPage);
+		$offset = ($page-1)*$resultsPerPage;
+		$books = BooksByCategories($conn,$offset,"others");
 		break;
 	
 	default:
 		$book = GetBooks($conn);
 		foreach ($book as $key => $value) {
-			$count++;
+			if($value['categories']=="others"){
+				$count++;
+			}
+			
 		}
 		$totalPages = ceil($count/$resultsPerPage);
-		$offset = ($page - 1) * $resultsPerPage; 
-		$books = Pagination($conn,$offset);
-		break;
+		$offset = ($page-1)*$resultsPerPage;
+		$books = BooksByCategories($conn,$offset,"others");
 }
 
 ?>
@@ -119,7 +170,7 @@ switch ($bookType) {
                                 <div class="l_p_text">
                                    <ul>
                                         <li class="p_icon"><a href="productdetails.php?ref=<?php echo $value['b_id']?>"><i class="icon_piechart"></i></a></li>
-                                        <li><a class="add_cart_btn" href="#" onclick="hamsCookie(<?php echo $value['id']; ?>);">Add To Cart</a></li>
+                                        <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
                                         <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                                     </ul>
                                     <h4><?php echo $value['title']; ?></h4>
@@ -226,11 +277,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 </div>
             </div>
         </footer>
-        <script type="text/javascript">
-        	function hamsCookie(var id){
-        		alert("id received");
-        	}
-        </script>
+       
         <!--================End Footer Area =================-->
         
         

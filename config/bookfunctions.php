@@ -146,5 +146,17 @@ function LatestBooks($conn,$offset,$limit){
 	}
 }
 
+function BooksByCategories($conn,$offset,$category){
+	$stmt = $conn->prepare("SELECT * FROM table_book inner join table_author on table_book.author_id = table_author.a_id WHERE categories = :cat lIMIT ".$offset ." ,8");
+	$stmt->bindParam(":cat",$category);
+	$stmt->execute();
+	if($stmt->rowCount()>0){
+		return $stmt->fetchAll();
+	}
+	else{
+		return false;
+	}
+}
+
 
 ?>

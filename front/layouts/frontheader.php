@@ -146,13 +146,13 @@ include '../config/call.php';
                                 Categories <i class="fa fa-angle-down" aria-hidden="true"></i>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="#">Academics</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Biography</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Fiction</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">History</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Medical Science</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Poetry</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Others</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="bookbycategories.php?ref=aca">Academics</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="bookbycategories.php?ref=bio">Biography</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="bookbycategories.php?ref=fic">Fiction</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="bookbycategories.php?ref=his">History</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="bookbycategories.php?ref=med">Medical Science</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="bookbycategories.php?ref=poe">Poetry</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="bookbycategories.php?ref=oth">Others</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>

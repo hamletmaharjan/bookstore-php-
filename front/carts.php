@@ -1,147 +1,136 @@
 <?php
 include 'layouts/frontheader.php';
 
-$b = $_GET['ref'];
 
-if(isset($_GET['page'])){
-	$page = $_GET['page'];
-}
-else {
-	$page = 1;
-}
-$bookType = substr($b,0,2);
-$books;
-$count=0;
-$resultsPerPage = 8;
-$totalPages = 0;
-$offset = 0;
-switch ($bookType) {
-	case 'pb':
-		$books = "crap";
-		break;
 
-	case 'lb':
-		$book = GetBooks($conn);
-		foreach ($book as $key => $value) {
-			if($value['published_date']>="2018-01-01"){
-				$count++;
-			}
-			
-		}
-		$totalPages = ceil($count/$resultsPerPage);
-		$offset = ($page - 1) * $resultsPerPage; 
-		$books = LatestBooks($conn,$offset,"2018-01-01");
-
-		break;
-
-	case 'cb':
-		$book = GetBooks($conn);
-		foreach ($book as $key => $value) {
-			if($value['price']<=1000){
-				$count++;
-			}
-			
-		}
-		$totalPages = ceil($count/$resultsPerPage);
-		$offset = ($page - 1) * $resultsPerPage; 
-		$books = CheapestBooks($conn,$offset,1000);
-		break;
-
-	case 'ab':
-		$book = GetBooks($conn);
-		foreach ($book as $key => $value) {
-			$count++;
-		}
-		$totalPages = ceil($count/$resultsPerPage);
-		$offset = ($page - 1) * $resultsPerPage; 
-		$books = Pagination($conn,$offset);
-		break;
-	
-	default:
-		$book = GetBooks($conn);
-		foreach ($book as $key => $value) {
-			$count++;
-		}
-		$totalPages = ceil($count/$resultsPerPage);
-		$offset = ($page - 1) * $resultsPerPage; 
-		$books = Pagination($conn,$offset);
-		break;
-}
 
 ?>
 
-<!--================Categories Product Area =================-->
-        <section class="no_sidebar_2column_area">
-            <div class="container">
-                <div class="showing_fillter">
-                    <div class="row m0">
-                        <div class="first_fillter">
-                            <h4><?php $temp = $offset+$resultsPerPage;
-                            echo "Showing ".($offset+1)." to ".$temp." of ".$count; ?></h4>
-                        </div>
-                        <div class="secand_fillter">
-                            <h4>SORT BY :</h4>
-                            <select class="selectpicker">
-                                <option>Name</option>
-                                <option>Name 2</option>
-                                <option>Name 3</option>
-                            </select>
-                        </div>
-                        <div class="third_fillter">
-                            <h4>Show : </h4>
-                            <select class="selectpicker">
-                                <option>4</option>
-                                <option>8</option>
-                                <option>12</option>
-                            </select>
-                        </div>
-                        <div class="four_fillter">
-                            <h4>View</h4>
-                            <a class="active" href="#"><i class="icon_grid-2x2"></i></a>
-                            <a href="#"><i class="icon_grid-3x3"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="two_column_product">
-                    <div class="row">
-                    	<?php
-                    	//$offset = ($page - 1) * $resultsPerPage; 
-                    	
 
-                    	if($books):
-                    		foreach ($books as $key => $value):		
-                    	?>
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="l_product_item">
-                                <div class="l_p_img">
-                                    <img class="" src="../admin/uploads/<?php echo $value['cover']; ?>" alt="" height="350px" width="100%">
-                                </div>
-                                <div class="l_p_text">
-                                   <ul>
-                                        <li class="p_icon"><a href="productdetails.php?ref=<?php echo $value['b_id']?>"><i class="icon_piechart"></i></a></li>
-                                        <li><a class="add_cart_btn" href="#" onclick="hamsCookie(<?php echo $value['id']; ?>);">Add To Cart</a></li>
-                                        <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
-                                    </ul>
-                                    <h4><?php echo $value['title']; ?></h4>
-                                    <h5>Rs <?php echo $value['price']; ?></h5>
-                                </div>
-                            </div>
-                        </div>
-                       	<?php endforeach; endif; ?>
-                        
-                    </div>
-                    <nav aria-label="Page navigation example" class="pagination_area">
-                      <ul class="pagination">
-                      	<?php for($page=1; $page <= $totalPages; $page++): ?>
-                        <li class="page-item"><a class="page-link" href="booklist.php?ref=<?php echo $bookType; ?>&amp;page=<?php echo $page; ?>"><?php echo $page; ?></a></li>
-                    <?php endfor;?>
-                        <li class="page-item next"><a class="page-link" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-                      </ul>
-                    </nav>
+<!--================Categories Banner Area =================-->
+        <section class="solid_banner_area">
+            <div class="container">
+                <div class="solid_banner_inner">
+                    <h3>shopping cart</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="shopping-cart.html">Shopping cart</a></li>
+                    </ul>
                 </div>
             </div>
         </section>
-        <!--================End Categories Product Area =================-->
+        <!--================End Categories Banner Area =================-->
+        
+        <!--================Shopping Cart Area =================-->
+        <section class="shopping_cart_area p_100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="cart_product_list">
+                            <h3 class="cart_single_title">Discount Cupon</h3>
+                            <div class="table-responsive-md">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"></th>
+                                            <th scope="col">product</th>
+                                            <th scope="col">price</th>
+                                            <th scope="col">qunatity</th>
+                                            <th scope="col">total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">
+                                                <img src="img/icon/close-icon.png" alt="">
+                                            </th>
+                                            <td>
+                                                <div class="media">
+                                                    <div class="d-flex">
+                                                        <img src="img/product/cart-product/cart-1.jpg" alt="">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h4>Mens Nike Bag</h4>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><p>$150</p></td>
+                                            <td><input type="text" placeholder="01"></td>
+                                            <td><p>$150</p></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">
+                                                <img src="img/icon/close-icon.png" alt="">
+                                            </th>
+                                            <td>
+                                                <div class="media">
+                                                    <div class="d-flex">
+                                                        <img src="img/product/cart-product/cart-2.jpg" alt="">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h4>Mens Nike Bag</h4>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><p>$150</p></td>
+                                            <td><input type="text" placeholder="01"></td>
+                                            <td><p>$250</p></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="calculate_shoping_area">
+                            <h3 class="cart_single_title">Calculate Shoping <span><i class="icon_minus-06"></i></span></h3>
+                            <div class="calculate_shop_inner">
+                                <form class="calculate_shoping_form row" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                                    <div class="form-group col-lg-12">
+                                        <select class="selectpicker">
+                                            <option>United State America (USA)</option>
+                                            <option>United State America (USA)</option>
+                                            <option>United State America (USA)</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <input type="text" class="form-control" id="state" name="state" placeholder="State / Country">
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <input type="text" class="form-control" id="zip" name="zip" placeholder="Postcode / Zip">
+                                    </div>
+                                    <div class="form-group col-lg-12">
+                                        <button type="submit" value="submit" class="btn submit_btn form-control">update totals</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="total_amount_area">
+                            <div class="cupon_box">
+                                <h3 class="cart_single_title">Discount Cupon</h3>
+                                <div class="cupon_box_inner">
+                                    <input type="text" placeholder="Enter your code here">
+                                    <button type="submit" class="btn btn-primary subs_btn">apply cupon</button>
+                                </div>
+                            </div>
+                            <div class="cart_totals">
+                                <h3 class="cart_single_title">Discount Cupon</h3>
+                                <div class="cart_total_inner">
+                                    <ul>
+                                        <li><a href="#"><span>Cart Subtotal</span> $400.00</a></li>
+                                        <li><a href="#"><span>Shipping</span> Free</a></li>
+                                        <li><a href="#"><span>Totals</span> $400.00</a></li>
+                                    </ul>
+                                </div>
+                                <button type="submit" class="btn btn-primary update_btn">update cart</button>
+                                <button type="submit" class="btn btn-primary checkout_btn">proceed to checkout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================End Shopping Cart Area =================-->
         
         <!--================Footer Area =================-->
         <footer class="footer_area">
@@ -226,11 +215,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 </div>
             </div>
         </footer>
-        <script type="text/javascript">
-        	function hamsCookie(var id){
-        		alert("id received");
-        	}
-        </script>
         <!--================End Footer Area =================-->
         
         
