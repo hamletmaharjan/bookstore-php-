@@ -60,7 +60,7 @@ if(isset($_POST['submitbtn'])){
                                      <div class="form-group">
                                           <label class="col-sm-2 control-label">Email</label>
                                           <div class="col-sm-10">
-                                              <input type="text" name="email" class="form-control">
+                                              <input type="email" name="email" class="form-control">
                                           </div>
                                      </div>
                                      <div class="form-group">

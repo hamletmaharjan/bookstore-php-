@@ -63,7 +63,7 @@ if(isset($_POST['savebtn'])){
                                      <div class="form-group">
                                           <label class="col-sm-2 control-label">Email</label>
                                           <div class="col-sm-10">
-                                              <input type="text" name="email" value="<?php echo $author['email']; ?>" class="form-control">
+                                              <input type="email" name="email" value="<?php echo $author['email']; ?>" class="form-control">
                                           </div>
                                      </div>
                                      <div class="form-group">

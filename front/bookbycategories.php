@@ -16,107 +16,76 @@ $totalPages = 0;
 $offset = 0;
 switch ($bookType) {
 	case 'aca':
-		$book = GetBooks($conn);
-		foreach ($book as $key => $value) {
-			if($value['categories']=="academics"){
-				$count++;
-			}
-			
+		$books = BooksByCategories($conn,$offset,"academics");
+		foreach ($books as $key => $value) {
+			$count++;
 		}
 		$totalPages = ceil($count/$resultsPerPage);
 		$offset = ($page-1)*$resultsPerPage;
-		$books = BooksByCategories($conn,$offset,"academics");
 		break;
 
 	case 'bio':
-		$book = GetBooks($conn);
-		foreach ($book as $key => $value) {
-			if($value['categories']=="biography"){
-				$count++;
-			}
-			
+		$books = BooksByCategories($conn,$offset,"biography");
+		foreach ($books as $key => $value) {
+			$count++;
 		}
 		$totalPages = ceil($count/$resultsPerPage);
 		$offset = ($page-1)*$resultsPerPage;
-		$books = BooksByCategories($conn,$offset,"biography");
 		break;
 
 	case 'fic':
-		$book = GetBooks($conn);
-		foreach ($book as $key => $value) {
-			if($value['categories']=="fiction"){
-				$count++;
-			}
-			
+		$books = BooksByCategories($conn,$offset,"fiction");
+		foreach ($books as $key => $value) {
+			$count++;
 		}
 		$totalPages = ceil($count/$resultsPerPage);
 		$offset = ($page-1)*$resultsPerPage;
-		$books = BooksByCategories($conn,$offset,"fiction");
 		break;
 
 	case 'his':
-		$book = GetBooks($conn);
-		foreach ($book as $key => $value) {
-			if($value['categories']=="history"){
-				$count++;
-			}
-			
+		$books = BooksByCategories($conn,$offset,"history");
+		foreach ($books as $key => $value) {
+			$count++;
 		}
 		$totalPages = ceil($count/$resultsPerPage);
 		$offset = ($page-1)*$resultsPerPage;
-		$books = BooksByCategories($conn,$offset,"history");
 		break;
 
 	case 'med':
-		$book = GetBooks($conn);
-		foreach ($book as $key => $value) {
-			if($value['categories']=="medical science"){
-				$count++;
-			}
-			
+		$books = BooksByCategories($conn,$offset,"medical science");
+		foreach ($books as $key => $value) {
+			$count++;
 		}
 		$totalPages = ceil($count/$resultsPerPage);
 		$offset = ($page-1)*$resultsPerPage;
-		$books = BooksByCategories($conn,$offset,"medical science");
 		break;
 
 	case 'poe':
-		$book = GetBooks($conn);
-		foreach ($book as $key => $value) {
-			if($value['categories']=="poetry"){
-				$count++;
-			}
-			
+		$books = BooksByCategories($conn,$offset,"poetry");
+		foreach ($books as $key => $value) {
+			$count++;
 		}
 		$totalPages = ceil($count/$resultsPerPage);
 		$offset = ($page-1)*$resultsPerPage;
-		$books = BooksByCategories($conn,$offset,"poetry");
 		break;
 
 	case 'oth':
-		$book = GetBooks($conn);
-		foreach ($book as $key => $value) {
-			if($value['categories']=="others"){
-				$count++;
-			}
-			
+		$books = BooksByCategories($conn,$offset,"others");
+		foreach ($books as $key => $value) {
+			$count++;
 		}
 		$totalPages = ceil($count/$resultsPerPage);
 		$offset = ($page-1)*$resultsPerPage;
-		$books = BooksByCategories($conn,$offset,"others");
 		break;
 	
 	default:
-		$book = GetBooks($conn);
-		foreach ($book as $key => $value) {
-			if($value['categories']=="others"){
-				$count++;
-			}
-			
+		$books = BooksByCategories($conn,$offset,"others");
+		foreach ($books as $key => $value) {
+			$count++;
 		}
 		$totalPages = ceil($count/$resultsPerPage);
 		$offset = ($page-1)*$resultsPerPage;
-		$books = BooksByCategories($conn,$offset,"others");
+		break;
 }
 
 ?>

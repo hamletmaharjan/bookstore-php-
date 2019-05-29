@@ -9,6 +9,12 @@ if(isset($_POST['submitbtn'])){
 	}
 }
 
+if(isset($_POST['loginbtn'])){
+	if(VerifyCustomer($conn,$_POST)){
+		redirection('index.php');
+	}
+}
+
 ?>
 
 <!--================Categories Banner Area =================-->
@@ -38,10 +44,10 @@ if(isset($_POST['submitbtn'])){
                             </div>
                             <form class="login_form row" method="POST">
                                 <div class="col-lg-12 form-group">
-                                    <input class="form-control" type="text" placeholder="Name">
+                                    <input class="form-control" type="text" name="c_username" placeholder="User Name">
                                 </div>
                                 <div class="col-lg-12 form-group">
-                                    <input class="form-control" type="text" placeholder="User Name">
+                                    <input class="form-control" type="password" name="c_password"  placeholder="Password">
                                 </div>
                                 <div class="col-lg-12 form-group">
                                     <div class="creat_account">
@@ -52,7 +58,7 @@ if(isset($_POST['submitbtn'])){
                                     <h4>Forgot your password ?</h4>
                                 </div>
                                 <div class="col-lg-12 form-group">
-                                    <button type="submit" value="submit" class="btn update_btn form-control">Login</button>
+                                    <button type="submit" value="submit" name="loginbtn" class="btn update_btn form-control">Login</button>
                                 </div>
                             </form>
                         </div>

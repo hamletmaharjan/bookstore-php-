@@ -7,6 +7,7 @@ include 'helpers.php';
 include 'userfunctions.php';
 include 'bookfunctions.php';
 include 'authorfunctions.php';
+include 'extrafunctions.php';
 
 $conn = new Connection(DBSERVER,DBNAME,DBUSER,DBPASS);
 

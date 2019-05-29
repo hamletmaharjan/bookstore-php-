@@ -1,7 +1,8 @@
 <?php
 include 'layouts/frontheader.php';
 
-
+$bookItems = GetCartItems($conn,$_SESSION['c_id']);
+dd($bookItems);
 
 
 ?>
@@ -40,6 +41,9 @@ include 'layouts/frontheader.php';
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    	<?php
+                                    	foreach ($bookItems as $key => $value):
+                                    	?>
                                         <tr>
                                             <th scope="row">
                                                 <img src="img/icon/close-icon.png" alt="">
@@ -47,35 +51,18 @@ include 'layouts/frontheader.php';
                                             <td>
                                                 <div class="media">
                                                     <div class="d-flex">
-                                                        <img src="img/product/cart-product/cart-1.jpg" alt="">
+                                                        <img src="../admin/uploads/<?php echo $value['cover']; ?>" alt="" width="100px" height="160px">
                                                     </div>
                                                     <div class="media-body">
-                                                        <h4>Mens Nike Bag</h4>
+                                                        <h4><?php echo $value['title']; ?></h4>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td><p>$150</p></td>
+                                            <td><p>Rs <?php echo $value['price']; ?></p></td>
                                             <td><input type="text" placeholder="01"></td>
                                             <td><p>$150</p></td>
                                         </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                <img src="img/icon/close-icon.png" alt="">
-                                            </th>
-                                            <td>
-                                                <div class="media">
-                                                    <div class="d-flex">
-                                                        <img src="img/product/cart-product/cart-2.jpg" alt="">
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <h4>Mens Nike Bag</h4>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td><p>$150</p></td>
-                                            <td><input type="text" placeholder="01"></td>
-                                            <td><p>$250</p></td>
-                                        </tr>
+                                    <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>

@@ -50,4 +50,45 @@ function Logout(){
 	return true;
 }
 
+function CheckUserLogin(){
+	if(isset($_SESSION['customer']) && isset($_SESSION['c_id'])){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
+function VerifyCustomer($conn,$data){
+	//$data['password'] = md5($data['password']);
+	$stmt = $conn->prepare("SELECT * FROM table_customer WHERE c_username=:username AND c_password=:pass");
+	$stmt->bindParam(':username',$data['c_username']);
+	$stmt->bindParam(':pass',$data['c_password']);
+	if($stmt->execute()){
+		
+		$stmt->setFetchMode(PDO::FETCH_ASSOC);
+		/* 
+		if($stmt->rowCount()>0){
+			$info = $stmt->fetch();
+			print_r($info);
+			return true;
+		}
+		*/
+
+		$info = $stmt->fetch();
+		if(!$info==NULL){
+			$_SESSION['customer'] = $info['c_username'];
+			$_SESSION['c_id'] = $info['c_id'];
+			return true;
+		}
+
+		
+
+		
+	}
+	else{
+		return false;
+	}
+}
+
 ?>
