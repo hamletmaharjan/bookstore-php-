@@ -65,29 +65,6 @@ $bookItems = GetCartItems($conn,$_SESSION['c_id']);
                                 </table>
                             </div>
                         </div>
-                        <div class="calculate_shoping_area">
-                            <h3 class="cart_single_title">Calculate Shoping <span><i class="icon_minus-06"></i></span></h3>
-                            <div class="calculate_shop_inner">
-                                <form class="calculate_shoping_form row" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
-                                    <div class="form-group col-lg-12">
-                                        <select class="selectpicker">
-                                            <option>United State America (USA)</option>
-                                            <option>United State America (USA)</option>
-                                            <option>United State America (USA)</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-lg-6">
-                                        <input type="text" class="form-control" id="state" name="state" placeholder="State / Country">
-                                    </div>
-                                    <div class="form-group col-lg-6">
-                                        <input type="text" class="form-control" id="zip" name="zip" placeholder="Postcode / Zip">
-                                    </div>
-                                    <div class="form-group col-lg-12">
-                                        <button type="submit" value="submit" class="btn submit_btn form-control">update totals</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="total_amount_area">
@@ -96,14 +73,19 @@ $bookItems = GetCartItems($conn,$_SESSION['c_id']);
                                 <div class="cart_total_inner">
                                     <ul>
                                         <li><a href="#"><span>Cart Subtotal</span> Rs 
-                                        	<?php $total=0; 
+                                        	<?php
+                                        	if($bookItems):
+                                        	 $total=0; 
                                         		foreach ($bookItems as $key => $value) {
                                         			$total = $total + $value['price'];
                                         		}
                                         		echo $total;
+                                        	
+                                        		
+
                                         	?></a></li>
                                         <li><a href="#"><span>Shipping</span> Free</a></li>
-                                        <li><a href="#"><span>Totals</span> <?php echo $total; ?></a></li>
+                                        <li><a href="#"><span>Totals</span> <?php echo $total; endif; ?></a></li>
                                     </ul>
                                 </div>
                                 <button type="submit" class="btn btn-primary update_btn">update cart</button>

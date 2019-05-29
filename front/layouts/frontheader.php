@@ -77,7 +77,7 @@ include '../config/call.php';
                             </ul>
                             <ul class="top_right">
                                 <li class="user"><a href="#"><i class="icon-user icons"></i></a></li>
-                                <li class="cart"><a href="#"><i class="icon-handbag icons"></i></a></li>
+                                <li class="cart"><a href="cart.php"><i class="icon-handbag icons"></i></a></li>
                                
                             </ul>
                         </div>
