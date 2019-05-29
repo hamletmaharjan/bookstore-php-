@@ -2,7 +2,6 @@
 include 'layouts/frontheader.php';
 
 $bookItems = GetCartItems($conn,$_SESSION['c_id']);
-dd($bookItems);
 
 
 ?>
@@ -35,18 +34,18 @@ dd($bookItems);
                                         <tr>
                                             <th scope="col"></th>
                                             <th scope="col">product</th>
+                                            <th scope="col">quantity</th>
                                             <th scope="col">price</th>
-                                            <th scope="col">qunatity</th>
-                                            <th scope="col">total</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     	<?php
+                                    	if($bookItems):
                                     	foreach ($bookItems as $key => $value):
                                     	?>
                                         <tr>
                                             <th scope="row">
-                                                <img src="img/icon/close-icon.png" alt="">
+                                                <a href="deletecartitem.php?ref=<?php echo $value['ca_id']; ?>"><img src="img/icon/close-icon.png" alt=""> </a>
                                             </th>
                                             <td>
                                                 <div class="media">
@@ -58,11 +57,10 @@ dd($bookItems);
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td><p>Rs <?php echo $value['price']; ?></p></td>
                                             <td><input type="text" placeholder="01"></td>
-                                            <td><p>$150</p></td>
+                                            <td><p>Rs <?php echo $value['price']; ?></p></td>
                                         </tr>
-                                    <?php endforeach; ?>
+                                    <?php endforeach; endif; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -93,24 +91,23 @@ dd($bookItems);
                     </div>
                     <div class="col-lg-4">
                         <div class="total_amount_area">
-                            <div class="cupon_box">
-                                <h3 class="cart_single_title">Discount Cupon</h3>
-                                <div class="cupon_box_inner">
-                                    <input type="text" placeholder="Enter your code here">
-                                    <button type="submit" class="btn btn-primary subs_btn">apply cupon</button>
-                                </div>
-                            </div>
                             <div class="cart_totals">
-                                <h3 class="cart_single_title">Discount Cupon</h3>
+                                <h3 class="cart_single_title">Your Amounts</h3>
                                 <div class="cart_total_inner">
                                     <ul>
-                                        <li><a href="#"><span>Cart Subtotal</span> $400.00</a></li>
+                                        <li><a href="#"><span>Cart Subtotal</span> Rs 
+                                        	<?php $total=0; 
+                                        		foreach ($bookItems as $key => $value) {
+                                        			$total = $total + $value['price'];
+                                        		}
+                                        		echo $total;
+                                        	?></a></li>
                                         <li><a href="#"><span>Shipping</span> Free</a></li>
-                                        <li><a href="#"><span>Totals</span> $400.00</a></li>
+                                        <li><a href="#"><span>Totals</span> <?php echo $total; ?></a></li>
                                     </ul>
                                 </div>
                                 <button type="submit" class="btn btn-primary update_btn">update cart</button>
-                                <button type="submit" class="btn btn-primary checkout_btn">proceed to checkout</button>
+                                <button type="submit" class="btn btn-primary checkout_btn" onclick="window.location.href='checkoutregister.php?ref=<?php echo 1; ?>'">proceed to checkout</button>
                             </div>
                         </div>
                     </div>
