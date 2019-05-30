@@ -1,7 +1,9 @@
 <?php
 include 'layouts/frontheader.php';
 
-$bookItems = GetCartItems($conn,$_SESSION['c_id']);
+
+
+
 
 
 ?>
@@ -40,7 +42,10 @@ $bookItems = GetCartItems($conn,$_SESSION['c_id']);
                                     </thead>
                                     <tbody>
                                     	<?php
-                                    	if($bookItems):
+                                    if(isset($_SESSION['c_id'])):
+										$bookItems = GetCartItems($conn,$_SESSION['c_id']);
+										
+                                    	
                                     	foreach ($bookItems as $key => $value):
                                     	?>
                                         <tr>
@@ -74,7 +79,7 @@ $bookItems = GetCartItems($conn,$_SESSION['c_id']);
                                     <ul>
                                         <li><a href="#"><span>Cart Subtotal</span> Rs 
                                         	<?php
-                                        	if($bookItems):
+                                        	if(isset($_SESSION['c_id'])):
                                         	 $total=0; 
                                         		foreach ($bookItems as $key => $value) {
                                         			$total = $total + $value['price'];

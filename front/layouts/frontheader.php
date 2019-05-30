@@ -12,7 +12,7 @@ include '../config/call.php';
         
         <link rel="icon" href="img/fav-icon.png" type="image/x-icon" />
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Hams Shop</title>
+        <title>Book Store</title>
 
         <!-- Icon css link -->
         <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -63,7 +63,7 @@ include '../config/call.php';
                         <div class="top_header_middle">
                             <a href="#"><i class="fa fa-phone"></i> Call Us: <span>+84 987 654 321</span></a>
                             <a href="#"><i class="fa fa-envelope"></i> Email: <span>support@hamshop.com</span></a>
-                            <img src="img/logo.png" alt="">
+                            <img src="img/booklogo.png" alt="">
                         </div>
                     </div>
                     <div class="col-lg-3">
@@ -75,9 +75,56 @@ include '../config/call.php';
                                 <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                                 <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
                             </ul>
+                            <!-- may use later
+                            <?php
+                            if(isset($_SESSION['customer']) && isset($_SESSION['c_id'])):
+                            ?>
                             <ul class="top_right">
-                                <li class="user"><a href="#"><i class="icon-user icons"></i></a></li>
-                                <li class="cart"><a href="cart.php"><i class="icon-handbag icons"></i></a></li>
+                                <li class="user">
+                                    <a> 
+                                    <i class="icon-user icons">
+                                        </i>
+                                        <i class="nav-item dropdown submenu">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" style="font-style: normal; font-size: 14px;">Hi, <?php echo $_SESSION['customer']; ?>
+                                <i aria-hidden="true"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" style="font-style: normal;">Log out</a></li>
+            
+                                </ul>
+                            </i>
+                            
+                                </a>
+                            </li>
+                            <li class="cart"><a href="cart.php"><i class="icon-handbag icons"></i></a></li> 
+                            </ul>
+                            <?php else:
+                            ?>
+
+                            <ul class="top_right">
+                                <li class="user"><a href="#"><i class="icon-user icons"></i></a>Login</li>
+                                <li class="cart"><a href="#"><i class="icon-handbag icons"></i></a></li>
+                            </ul>
+
+                        <?php endif; ?>
+
+                    -->
+
+                            
+                            <ul class="top_right">
+                                <?php
+                                if(isset($_SESSION['customer']) && isset($_SESSION['c_id'])):
+                                ?>
+                                <li class=""><a href="#">Hi, <?php echo $_SESSION['customer']; ?></i></a></li>
+                                <li class=""><a href="#">logout</i></a></li>
+                                
+                                
+                                <?php else: ?>
+                                
+                                <li class="user"><a href="#">login</i></a></li>
+
+                            <?php endif; ?>
+                                <li class="cart"><a href="cart.php"><i class="icon-handbag icons"></i></a></li> 
                                
                             </ul>
                         </div>
