@@ -54,15 +54,15 @@ include '../config/call.php';
                                 </select>
                             </div>
                             <select class="selectpicker usd_select">
-                                <option>Rupees</option>
+                                <option>Rs</option>
                             </select>
                            
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="top_header_middle">
-                            <a href="#"><i class="fa fa-phone"></i> Call Us: <span>+84 987 654 321</span></a>
-                            <a href="#"><i class="fa fa-envelope"></i> Email: <span>support@hamshop.com</span></a>
+                            <a href="#"><i class="fa fa-phone"></i> Call Us: <span>+977 9841363126</span></a>
+                            <a href="#"><i class="fa fa-envelope"></i> Email: <span>support@bookstore.com</span></a>
                             <img src="img/booklogo.png" alt="">
                         </div>
                     </div>
@@ -147,15 +147,7 @@ include '../config/call.php';
                         <ul class="navbar-nav categories">
                             <li class="nav-item">
                                 <select class="selectpicker" name="picker">
-                                    <option>Categories</option>
-                                    <option>Academics</option>
-                                    <option>Biography</option>
-                                    <option>Fiction</option>
-                                    <option>History</option>
-                                    <option>Medical Science</option>
-                                    <option>Poetry</option>
-                                    <option>Others</option>
-
+                                    <option>Navigation</option>
                                 </select>
                             </li>
                         </ul>
@@ -186,7 +178,7 @@ include '../config/call.php';
                                     <li class="nav-item"><a class="nav-link" href="bookbycategories.php?ref=oth">Others</a></li>
                                 </ul>
                             </li>
-                           
+                            <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
                         </ul>
                     </div>
