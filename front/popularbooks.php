@@ -1,88 +1,11 @@
 <?php
 include 'layouts/frontheader.php';
 
-$b = $_GET['ref'];
-
-if(isset($_GET['page'])){
-	$page = $_GET['page'];
-}
-else {
-	$page = 1;
-}
-$bookType = substr($b,0,2);
-$books;
-$count=0;
-$resultsPerPage = 8;
-$totalPages = 0;
-$offset = 0;
-switch ($bookType) {
-	/*
-	case 'pb':
-		$totalOrders = GetAllOrders($conn);
-		$book = GetBooks($conn);
-		$orders = GetOrders($conn);
-		foreach ($book as $key => $value) {
-			$temp=0;
-			for($i=0; $i<=$totalOrders-1; $i++){
-				if($value['b_id']==$orders[$i]['book_id']){
-					$temp++;
-				}
-			}
-			if($temp>=2){
-				dd($value);
-			}
-		}
-		break;
-	*/
-	case 'lb':
-		$book = GetBooks($conn);
-		foreach ($book as $key => $value) {
-			if($value['published_date']>="2018-01-01"){
-				$count++;
-			}
-			
-		}
-		$totalPages = ceil($count/$resultsPerPage);
-		$offset = ($page - 1) * $resultsPerPage; 
-		$books = LatestBooks($conn,$offset,"2018-01-01");
-
-		break;
-
-	case 'cb':
-		$book = GetBooks($conn);
-		foreach ($book as $key => $value) {
-			if($value['price']<=1000){
-				$count++;
-			}
-			
-		}
-		$totalPages = ceil($count/$resultsPerPage);
-		$offset = ($page - 1) * $resultsPerPage; 
-		$books = CheapestBooks($conn,$offset,1000);
-		break;
-
-	case 'ab':
-		$book = GetBooks($conn);
-		foreach ($book as $key => $value) {
-			$count++;
-		}
-		$totalPages = ceil($count/$resultsPerPage);
-		$offset = ($page - 1) * $resultsPerPage; 
-		$books = Pagination($conn,$offset);
-		break;
-	
-	default:
-		$book = GetBooks($conn);
-		foreach ($book as $key => $value) {
-			$count++;
-		}
-		$totalPages = ceil($count/$resultsPerPage);
-		$offset = ($page - 1) * $resultsPerPage; 
-		$books = Pagination($conn,$offset);
-		break;
-}
-
+$totalOrders = GetAllOrders($conn);
+$book = GetBooks($conn);
+$orders = GetOrders($conn);
 ?>
+
 
 <!--================Categories Product Area =================-->
         <section class="no_sidebar_2column_area">
@@ -90,8 +13,7 @@ switch ($bookType) {
                 <div class="showing_fillter">
                     <div class="row m0">
                         <div class="first_fillter">
-                            <h4><?php $temp = $offset+$resultsPerPage;
-                            echo "Showing ".($offset+1)." to ".$temp." of ".$count; ?></h4>
+                            <h4>Showing 1 to 8 of total</h4>
                         </div>
                         <div class="secand_fillter">
                             <h4>SORT BY :</h4>
@@ -122,8 +44,14 @@ switch ($bookType) {
                     	//$offset = ($page - 1) * $resultsPerPage; 
                     	
 
-                    	if($books):
-                    		foreach ($books as $key => $value):		
+                    	foreach ($book as $key => $value):
+							$temp=0;
+							for($i=0; $i<=$totalOrders-1; $i++){
+								if($value['b_id']==$orders[$i]['book_id']){
+									$temp++;
+								}
+							}
+							if($temp>=3):	
                     	?>
                         <div class="col-lg-3 col-sm-6">
                             <div class="l_product_item">
@@ -141,14 +69,12 @@ switch ($bookType) {
                                 </div>
                             </div>
                         </div>
-                       	<?php endforeach; endif; ?>
+                       	<?php endif; endforeach; ?>
                         
                     </div>
                     <nav aria-label="Page navigation example" class="pagination_area">
                       <ul class="pagination">
-                      	<?php for($page=1; $page <= $totalPages; $page++): ?>
-                        <li class="page-item"><a class="page-link" href="booklist.php?ref=<?php echo $bookType; ?>&amp;page=<?php echo $page; ?>"><?php echo $page; ?></a></li>
-                    <?php endfor;?>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
                         <li class="page-item next"><a class="page-link" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
                       </ul>
                     </nav>
@@ -169,11 +95,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 </div>
             </div>
         </footer>
-        <script type="text/javascript">
-        	function hamsCookie(var id){
-        		alert("id received");
-        	}
-        </script>
+       
         <!--================End Footer Area =================-->
         
         

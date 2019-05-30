@@ -60,6 +60,17 @@ function GetAllBooks($conn){
 }
 
 
+function GetOrders($conn){
+	$stmt = $conn->prepare("SELECT * FROM table_order");
+	$stmt->execute();
+	if($stmt->rowCount()>0){
+		return $stmt->fetchAll();
+	}
+	else{
+		return false;
+	}
+}
+
 
 
 

@@ -158,7 +158,7 @@ include '../config/call.php';
                                 Pages <i class="fa fa-angle-down" aria-hidden="true"></i>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="booklist.php?ref=pb">Popular Books</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="popularbooks.php">Popular Books</a></li>
                                     <li class="nav-item"><a class="nav-link" href="booklist.php?ref=lb">Latest Books</a></li>
                                     <li class="nav-item"><a class="nav-link" href="booklist.php?ref=cb">Cheapest Books</a></li>
                                     <li class="nav-item"><a class="nav-link" href="booklist.php?ref=ab">All Books</a></li>
