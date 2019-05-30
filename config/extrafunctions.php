@@ -21,7 +21,7 @@ function AddToCart($conn,$customerId,$bookId){
 
 function GetCartItems($conn, $customerId){
 	$stmt = $conn->prepare("SELECT ca_id,customer_id,book_id,title,price,cover FROM table_cart inner join table_book on table_cart.book_id = table_book.b_id WHERE customer_id = :cid");
-	$stmt->bindParam("cid",$customerId);
+	$stmt->bindParam(":cid",$customerId);
 	$stmt->execute();
 	if($stmt->rowCount()>0){
 		return $stmt->fetchAll();
@@ -30,6 +30,38 @@ function GetCartItems($conn, $customerId){
 		return false;
 	}
 }
+
+function GetAllCartItems($conn){
+	$stmt = $conn->prepare("SELECT * FROM table_cart");
+	if($stmt->execute()){
+		return $stmt->rowCount();
+	}
+	else {
+		return false;
+	}
+}
+function GetAllOrders($conn){
+	$stmt = $conn->prepare("SELECT * FROM table_order");
+	if($stmt->execute()){
+		return $stmt->rowCount();
+	}
+	else {
+		return false;
+	}
+}
+function GetAllBooks($conn){
+	$stmt = $conn->prepare("SELECT * FROM table_book");
+	if($stmt->execute()){
+		return $stmt->rowCount();
+	}
+	else {
+		return false;
+	}
+}
+
+
+
+
 
 
 function DeleteCart($conn,$cartId){
