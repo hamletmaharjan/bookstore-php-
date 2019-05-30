@@ -10,7 +10,9 @@ if(isset($_POST['submitbtn'])){
 		$_POST['book_id'] = $value['book_id'];
 
 		//dd($_POST);
-		InsertOrder($conn,$_POST,"table_order");
+		if(InsertOrder($conn,$_POST,"table_order")){
+			SetMessage('Order successfull','success');
+		}
 	}
 }
 
@@ -31,6 +33,16 @@ if(isset($_POST['submitbtn'])){
             </div>
         </section>
         <!--================End Categories Banner Area =================-->
+
+        <div class="row">
+        	<div class="col-lg-4">
+        	</div>
+        	<div class="col-lg-4">
+        		<?php  DisplayMessage(); ?>
+        	</div>
+        	<div class="col-lg-4">
+        	</div>
+        </div>
         
         <!--================Register Area =================-->
         <section class="register_area p_100">
@@ -58,25 +70,25 @@ if(isset($_POST['submitbtn'])){
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label for="name">City <span>*</span></label>
-                                            <input type="text" class="form-control" name="city" placeholder="">
+                                            <input type="text" class="form-control" name="city" placeholder="" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label for="last">Zip Code <span>*</span></label>
-                                            <input type="number" class="form-control" name="zip_code">
+                                            <input type="number" class="form-control" name="zip_code" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label for="name">Address Line 1 <span>*</span></label>
-                                            <input type="text" class="form-control" name="address_line_1" placeholder="Street address,P.O.box,c/o">
+                                            <input type="text" class="form-control" name="address_line_1" placeholder="Street address,P.O.box,c/o" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label for="name">Address Line 2 <span>*</span></label>
-                                            <input type="text" class="form-control" name="address_line_2" placeholder="Apartment, Unit, Building, Floor">
+                                            <input type="text" class="form-control" name="address_line_2" placeholder="Apartment, Unit, Building, Floor" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -111,45 +123,18 @@ if(isset($_POST['submitbtn'])){
                                             <div class="card-header" role="tab" id="headingOne">
                                                 <h5 class="mb-0">
                                                     <a data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="true" aria-controls="collapseOne">
-                                                    direct bank transfer
+                                                    Cash on delivery
                                                     </a>
                                                 </h5>
                                             </div>
 
                                             <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                                                 <div class="card-body">
-                                                    Lorem Ipsum is simply dummy text of the print-ing and typesetting industry. Lorem Ipsum has been the industry's. 
+                                                    The payment can be made after delivery with cash
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card">
-                                            <div class="card-header" role="tab" id="headingTwo">
-                                                <h5 class="mb-0">
-                                                    <a class="collapsed" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
-                                                    cheque payment
-                                                    </a>
-                                                </h5>
-                                            </div>
-                                            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
-                                                <div class="card-body">
-                                                    Lorem Ipsum is simply dummy text of the print-ing and typesetting industry. Lorem Ipsum has been the industry's. 
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <div class="card-header" role="tab" id="headingThree">
-                                                <h5 class="mb-0">
-                                                    <a class="collapsed" data-toggle="collapse" href="#collapseThree" role="button" aria-expanded="false" aria-controls="collapseThree">
-                                                    cash on delivery
-                                                    </a>
-                                                </h5>
-                                            </div>
-                                            <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
-                                                <div class="card-body">
-                                                    Lorem Ipsum is simply dummy text of the print-ing and typesetting industry. Lorem Ipsum has been the industry's. 
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>

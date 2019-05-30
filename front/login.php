@@ -4,8 +4,7 @@ include 'layouts/frontheader.php';
 
 if(isset($_POST['submitbtn'])){
 	if(InsertData($conn,$_POST,"table_customer")){
-		ShowMessage("Data Added Successfully","success");
-    	redirection("login.php");
+		SetMessage("Successfully created","success");
 	}
 }
 
@@ -13,6 +12,10 @@ if(isset($_POST['loginbtn'])){
 	if(VerifyCustomer($conn,$_POST)){
 		redirection('index.php');
 	}
+
+	SetMessage("invalid information","failure");
+
+	
 }
 
 ?>
@@ -30,17 +33,30 @@ if(isset($_POST['loginbtn'])){
             </div>
         </section>
         <!--================End Categories Banner Area =================-->
+        <div class="row">
+        	<div class="col-lg-4">
+        	</div>
+        	<div class="col-lg-4">
+        		<?php 
+                                DisplayMessage(); ?>
+        	</div>
+        	<div class="col-lg-4">
+        	</div>
+        	
+        </div>
         
         <!--================login Area =================-->
         <section class="login_area p_100">
-        	<?php DisplayMessage(); ?>
+        	
+        	
             <div class="container">
                 <div class="login_inner">
                     <div class="row">
-                        <div class="col-lg-4">
+                        <div class="col-lg-6">
                             <div class="login_title">
                                 <h2>log in your account</h2>
-                                <p>Log in to your account to discovery all great features in this template.</p>
+                                <?php 
+                                //DisplayMessage(); ?>
                             </div>
                             <form class="login_form row" method="POST">
                                 <div class="col-lg-12 form-group">
@@ -50,40 +66,33 @@ if(isset($_POST['loginbtn'])){
                                     <input class="form-control" type="password" name="c_password"  placeholder="Password">
                                 </div>
                                 <div class="col-lg-12 form-group">
-                                    <div class="creat_account">
-                                        <input type="checkbox" id="f-option" name="selector">
-                                        <label for="f-option">Keep me logged in</label>
-                                        <div class="check"></div>
-                                    </div>
-                                    <h4>Forgot your password ?</h4>
-                                </div>
-                                <div class="col-lg-12 form-group">
                                     <button type="submit" value="submit" name="loginbtn" class="btn update_btn form-control">Login</button>
                                 </div>
                             </form>
                         </div>
-                        <div class="col-lg-8">
+                        <div class="col-lg-6">
                             <div class="login_title">
                                 <h2>create account</h2>
-                                <p>Follow the steps below to create email account enjoy the great mail.com emailing experience.                                                                                kljfiejiflksjilkjsijfelksjfie jlsie fsl</p>
+                                <?php 
+                                //DisplayMessage(); ?>
                             </div>
                             <form class="login_form row" method="POST">
-                                <div class="col-lg-6 form-group">
+                                <div class="col-lg-12 form-group">
                                     <input class="form-control" type="text" name="c_name" placeholder="Name">
                                 </div>
-                                <div class="col-lg-6 form-group">
+                                <div class="col-lg-12 form-group">
                                     <input class="form-control" type="text" name="c_username" placeholder="User Name">
                                 </div>
-                                <div class="col-lg-6 form-group">
+                                <div class="col-lg-12 form-group">
                                     <input class="form-control" type="email" name="c_email" placeholder="Email">
                                 </div>
-                                <div class="col-lg-6 form-group">
+                                <div class="col-lg-12 form-group">
                                     <input class="form-control" type="text" name="c_phone" placeholder="Phone">
                                 </div>
-                                <div class="col-lg-6 form-group">
+                                <div class="col-lg-12 form-group">
                                     <input class="form-control" type="password" name="c_password" placeholder="Password">
                                 </div>
-                                <div class="col-lg-6 form-group">
+                                <div class="col-lg-12 form-group">
                                     <button type="submit" name="submitbtn" class="btn subs_btn form-control">register now</button>
                                 </div>
                             </form>

@@ -243,24 +243,7 @@
         }
         &.cart{
             margin-right: -3px;
-            a{
-                position: relative;
-                &:before{
-                    content: "0";
-                    height: 20px;
-                    width: 20px;
-                    border-radius: 50%;
-                    text-align: center;
-                    color: #fff;
-                    font-family: $pop;
-                    font-size: 12px;
-                    position: absolute;
-                    right: 6px;
-                    bottom: 6px;
-                    background: $baseColor;
-                    line-height: 20px;
-                }
-            }
+          
         }
         &.h_price{
             .bootstrap-select{

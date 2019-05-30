@@ -115,13 +115,13 @@ include '../config/call.php';
                                 <?php
                                 if(isset($_SESSION['customer']) && isset($_SESSION['c_id'])):
                                 ?>
-                                <li class=""><a href="#">Hi, <?php echo $_SESSION['customer']; ?></i></a></li>
-                                <li class=""><a href="#">logout</i></a></li>
+                                <li class=""><?php echo $_SESSION['customer']; ?></li>
+                                <li class=""><a href="logout.php">logout</i></a></li>
                                 
                                 
                                 <?php else: ?>
                                 
-                                <li class="user"><a href="#">login</i></a></li>
+                                <li class="user"><a href="login.php">login</i></a></li>
 
                             <?php endif; ?>
                                 <li class="cart"><a href="cart.php"><i class="icon-handbag icons"></i></a></li> 

@@ -61,8 +61,25 @@ function UploadFile($path,$file){
 	else{
 		return false;
 	}
-
-
 }
+
+function SetMessage($message, $messageType){
+	switch ($messageType) {
+		case 'success':
+			$_SESSION['msg'] = '<p style="color:green; text-align:center; font-size:18px;">'.$message.' </p>';
+			break;
+
+		case 'failure':
+			$_SESSION['msg'] = '<p style="color:red; text-align:center; font-size:18px;">'.$message.' </p>';
+			# code...
+			break;
+		
+		default:
+			
+			break;
+	}
+}
+
+
 
 ?>
