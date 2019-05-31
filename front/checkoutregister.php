@@ -14,6 +14,8 @@ if(isset($_POST['submitbtn'])){
 			SetMessage('Order successfull','success');
 		}
 	}
+
+	DeleteCartByCid($conn,$_SESSION['c_id']);
 }
 
 
@@ -110,13 +112,15 @@ if(isset($_POST['submitbtn'])){
                                         <h5><?php echo $value['title']; ?> <span>Rs <?php echo $value['price']; ?></span></h5>
                                     <?php endforeach; endif; ?>
 
-                                        <h4>Cart Subtotal <span>Rs <?php $total=0; 
+                                        <h4>Cart Subtotal <span>Rs <?php
+                                        		if($bookItems):
+                                        		 $total=0; 
                                         		foreach ($bookItems as $key => $value) {
                                         			$total = $total + $value['price'];
                                         		}
                                         		echo $total;
                                         	?></span></h4>
-                                        <h3><span class="normal_text">Order Totals</span> <span>Rs <?php echo $total; ?></span></h3>
+                                        <h3><span class="normal_text">Order Totals</span> <span>Rs <?php echo $total; endif; ?></span></h3>
                                     </div>
                                     <div id="accordion" role="tablist" class="price_method">
                                         <div class="card">

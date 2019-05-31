@@ -44,7 +44,7 @@ include 'layouts/frontheader.php';
                                     	<?php
                                     if(isset($_SESSION['c_id'])):
 										$bookItems = GetCartItems($conn,$_SESSION['c_id']);
-										
+										if($bookItems):
                                     	
                                     	foreach ($bookItems as $key => $value):
                                     	?>
@@ -65,7 +65,7 @@ include 'layouts/frontheader.php';
                                             <td><input type="text" placeholder="01"></td>
                                             <td><p>Rs <?php echo $value['price']; ?></p></td>
                                         </tr>
-                                    <?php endforeach; endif; ?>
+                                    <?php  endforeach; endif; endif; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -80,6 +80,7 @@ include 'layouts/frontheader.php';
                                         <li><a href="#"><span>Cart Subtotal</span> Rs 
                                         	<?php
                                         	if(isset($_SESSION['c_id'])):
+                                        		if($bookItems):
                                         	 $total=0; 
                                         		foreach ($bookItems as $key => $value) {
                                         			$total = $total + $value['price'];
@@ -90,7 +91,7 @@ include 'layouts/frontheader.php';
 
                                         	?></a></li>
                                         <li><a href="#"><span>Shipping</span> Free</a></li>
-                                        <li><a href="#"><span>Totals</span> <?php echo $total; endif; ?></a></li>
+                                        <li><a href="#"><span>Totals</span> <?php echo $total; endif; endif; ?></a></li>
                                     </ul>
                                 </div>
                                 <button type="submit" class="btn btn-primary update_btn">update cart</button>

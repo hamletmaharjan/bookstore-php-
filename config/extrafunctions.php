@@ -86,6 +86,18 @@ function DeleteCart($conn,$cartId){
 	}
 }
 
+
+function DeleteCartByCid($conn,$id){
+	$stmt= $conn->prepare("DELETE FROM table_cart WHERE customer_id=:id");
+	$stmt->bindParam(":id",$id);
+	if($stmt->execute()){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
 function InsertOrder($conn,$data,$tablename){
 	unset($data['submitbtn']);
 	$fields = array_keys($data);
