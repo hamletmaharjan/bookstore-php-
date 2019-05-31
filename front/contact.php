@@ -1,6 +1,16 @@
 <?php
 include 'layouts/frontheader.php';
 
+
+if(isset($_POST['submitbtn'])){
+
+    dd($_POST);
+    if(InsertData($conn,$_POST,"table_contact")){
+        SetMessage("Data Added","success");
+        //redirection('contact.php');
+    }
+}
+
 ?>
 
 
@@ -17,65 +27,39 @@ include 'layouts/frontheader.php';
             </div>
         </section>
         <!--================End Categories Banner Area =================-->
-        
+        <div class="row">
+            <div class="col-lg-4">
+            </div>
+            <div class="col-lg-4">
+                <?php 
+                                DisplayMessage(); ?>
+            </div>
+            <div class="col-lg-4">
+            </div>
+            
+        </div>
         <!--================Contact Area =================-->
         <section class="contact_area p_100">
             <div class="container">
                 <div class="contact_title">
                     <h2>Get in Touch</h2>
-                    <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui.</p>
-                </div>
-                <div class="row contact_details">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="media">
-                            <div class="d-flex">
-                                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                            </div>
-                            <div class="media-body">
-                                <p>House # 402, Roboto Street,<br />New York, USA.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="media">
-                            <div class="d-flex">
-                                <i class="fa fa-phone" aria-hidden="true"></i>
-                            </div>
-                            <div class="media-body">
-                                <a href="tel:+1109171234567">+110 - 917 - 123 - 4567</a>
-                                <a href="tel:+1101911897654">+110 - 191 - 189 - 7654</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="media">
-                            <div class="d-flex">
-                                <i class="fa fa-envelope" aria-hidden="true"></i>
-                            </div>
-                            <div class="media-body">
-                                <a href="mailto:busines@persuit.com">busines@persuit.com</a>
-                                <a href="mailto:support@persuit.com">support@persuit.com</a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="contact_form_inner">
                     <h3>Drop a Message</h3>
-                    <form class="contact_us_form row" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
-                        <div class="form-group col-lg-4">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Full Name *">
+                    <form class="contact_us_form row" action="contact_process.php" method="POST" id="contactForm" novalidate="novalidate">
+                        <div class="form-group col-lg-6">
+                            <input type="text" class="form-control" id="name" name="full_name" placeholder="Full Name *">
                         </div>
-                        <div class="form-group col-lg-4">
+                        <div class="form-group col-lg-6">
                             <input type="email" class="form-control" id="email" name="email" placeholder="Email Address *">
                         </div>
-                        <div class="form-group col-lg-4">
-                            <input type="text" class="form-control" id="website" name="website" placeholder="Your Website">
+                        
+                        <div class="form-group col-lg-12">
+                            <textarea class="form-control" name="message" id="message" rows="1" placeholder="Type Your Message..." name="message"></textarea>
                         </div>
                         <div class="form-group col-lg-12">
-                            <textarea class="form-control" name="message" id="message" rows="1" placeholder="Type Your Message..."></textarea>
-                        </div>
-                        <div class="form-group col-lg-12">
-                            <button type="submit" value="submit" class="btn update_btn form-control">Send Message</button>
+                            
+                            <button type="submit"  name="submitbtn" class="btn update_btn form-control">Send Message</button>
                         </div>
                     </form>
                 </div>
@@ -84,83 +68,12 @@ include 'layouts/frontheader.php';
         <!--================End Contact Area =================-->
         
         <!--================Footer Area =================-->
-        <footer class="footer_area">
+         <footer class="footer_area">
             <div class="container">
-                <div class="footer_widgets">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-4 col-6">
-                            <aside class="f_widget f_about_widget">
-                                <img src="img/logo.png" alt="">
-                                <p>Persuit is a Premium PSD Template. Best choice for your online store. Let purchase it to enjoy now</p>
-                                <h6>Social:</h6>
-                                <ul>
-                                    <li><a href="#"><i class="social_facebook"></i></a></li>
-                                    <li><a href="#"><i class="social_twitter"></i></a></li>
-                                    <li><a href="#"><i class="social_pinterest"></i></a></li>
-                                    <li><a href="#"><i class="social_instagram"></i></a></li>
-                                    <li><a href="#"><i class="social_youtube"></i></a></li>
-                                </ul>
-                            </aside>
-                        </div>
-                        <div class="col-lg-2 col-md-4 col-6">
-                            <aside class="f_widget link_widget f_info_widget">
-                                <div class="f_w_title">
-                                    <h3>Information</h3>
-                                </div>
-                                <ul>
-                                    <li><a href="#">About us</a></li>
-                                    <li><a href="#">Delivery information</a></li>
-                                    <li><a href="#">Terms & Conditions</a></li>
-                                    <li><a href="#">Help Center</a></li>
-                                    <li><a href="#">Returns & Refunds</a></li>
-                                </ul>
-                            </aside>
-                        </div>
-                        <div class="col-lg-2 col-md-4 col-6">
-                            <aside class="f_widget link_widget f_service_widget">
-                                <div class="f_w_title">
-                                    <h3>Customer Service</h3>
-                                </div>
-                                <ul>
-                                    <li><a href="#">My account</a></li>
-                                    <li><a href="#">Ordr History</a></li>
-                                    <li><a href="#">Wish List</a></li>
-                                    <li><a href="#">Newsletter</a></li>
-                                    <li><a href="#">Contact Us</a></li>
-                                </ul>
-                            </aside>
-                        </div>
-                        <div class="col-lg-2 col-md-4 col-6">
-                            <aside class="f_widget link_widget f_extra_widget">
-                                <div class="f_w_title">
-                                    <h3>Extras</h3>
-                                </div>
-                                <ul>
-                                    <li><a href="#">Brands</a></li>
-                                    <li><a href="#">Gift Vouchers</a></li>
-                                    <li><a href="#">Affiliates</a></li>
-                                    <li><a href="#">Specials</a></li>
-                                </ul>
-                            </aside>
-                        </div>
-                        <div class="col-lg-2 col-md-4 col-6">
-                            <aside class="f_widget link_widget f_account_widget">
-                                <div class="f_w_title">
-                                    <h3>My Account</h3>
-                                </div>
-                                <ul>
-                                    <li><a href="#">My account</a></li>
-                                    <li><a href="#">Ordr History</a></li>
-                                    <li><a href="#">Wish List</a></li>
-                                    <li><a href="#">Newsletter</a></li>
-                                </ul>
-                            </aside>
-                        </div>
-                    </div>
-                </div>
+                
                 <div class="footer_copyright">
                     <h5>© <script>document.write(new Date().getFullYear());</script> <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 </h5>
                 </div>

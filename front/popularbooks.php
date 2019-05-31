@@ -15,26 +15,11 @@ $orders = GetOrders($conn);
                         <div class="first_fillter">
                             <h4>Showing 1 to 8 of total</h4>
                         </div>
-                        <div class="secand_fillter">
-                            <h4>SORT BY :</h4>
-                            <select class="selectpicker">
-                                <option>Name</option>
-                                <option>Name 2</option>
-                                <option>Name 3</option>
-                            </select>
-                        </div>
                         <div class="third_fillter">
                             <h4>Show : </h4>
                             <select class="selectpicker">
-                                <option>4</option>
                                 <option>8</option>
-                                <option>12</option>
                             </select>
-                        </div>
-                        <div class="four_fillter">
-                            <h4>View</h4>
-                            <a class="active" href="#"><i class="icon_grid-2x2"></i></a>
-                            <a href="#"><i class="icon_grid-3x3"></i></a>
                         </div>
                     </div>
                 </div>
