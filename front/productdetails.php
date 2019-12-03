@@ -55,7 +55,7 @@ $book = GetBookDetails($conn,$bookId);
                                     <input type="text" name="qty" id="sst" maxlength="12" value="01" title="Quantity:" class="input-text qty">
                                     <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button"><i class="icon_plus"></i></button>
                                 </div>
-                                <a class="add_cart_btn" href="addtocart.php?ref=<?php echo $value['b_id']?>">add to cart</a>
+                                <a class="add_cart_btn" href="addtocart.php?ref=<?php echo $book['b_id']?>">add to cart</a>
                             </div>
                             <div class="shareing_icon">
                                 <h5>share :</h5>
